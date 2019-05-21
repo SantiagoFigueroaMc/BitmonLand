@@ -62,7 +62,7 @@ namespace BitmonLand
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Nieve1;
                     else
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Pasto1;
-                    cas.Dock = DockStyle.None;
+                    cas.Dock = DockStyle.Fill;
                     
                     MapLayout.Controls.Add(cas, c, r);
                 }
@@ -78,7 +78,6 @@ namespace BitmonLand
                         bitmons_alive_count--;
                         Bitmon b = new Bitmon();
                         b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
-                        b.SizeMode = PictureBoxSizeMode.AutoSize;
                         c.AddOcupante(b);
                     }
                     if (random.Next(100) < 20) // Probabilidad de que aparezca un bitmon
@@ -88,7 +87,6 @@ namespace BitmonLand
                             bitmons_alive_count--;
                             Bitmon b = new Bitmon();
                             b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
-                            b.SizeMode = PictureBoxSizeMode.AutoSize;
                             c.AddOcupante(b);
                         }
                     }

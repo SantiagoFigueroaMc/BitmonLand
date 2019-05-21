@@ -14,7 +14,7 @@ namespace BitmonLand
 
         public Bitmon()
         {
-
+            SizeMode = PictureBoxSizeMode.AutoSize;
         }
 
         public string Tipo
