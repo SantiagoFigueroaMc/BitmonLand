@@ -118,31 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Agua1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Grafics\Agua1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Arena1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Grafics\Arena1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="BitmonGhost1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Grafics\BitmonGhost1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Dorvalo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Grafics\Dorvalo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Ent1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Grafics\Ent1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gofue1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Grafics\Gofue1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Pasto1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Grafics\Pasto1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Volcan1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Grafics\Volcan1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Agua1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Grafics\Agua1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dorvalo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Grafics\Dorvalo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Wetar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Grafics\Wetar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gofue1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Grafics\Gofue1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Arena1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Grafics\Arena1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Volcan1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Grafics\Volcan1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ent1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Grafics\Ent1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Nieve1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Grafics\Nieve1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

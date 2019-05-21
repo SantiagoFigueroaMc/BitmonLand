@@ -9,12 +9,10 @@ namespace BitmonLand
 {
     class Casilla : PictureBox
     {
-        private int row, column;
         private List<Bitmon> ocupantes;
 
         public Casilla()
         {
-
         }
 
         public List<Bitmon> OcupantesSetter
@@ -27,7 +25,6 @@ namespace BitmonLand
                 }
             }
         }
-        
 
         public void AddOcupante(Bitmon bitmon)
         {
