@@ -33,7 +33,7 @@ namespace BitmonLand
             string[] posibles_tipos = { "nieve", "agua", "pasto", "volcan", "arena" };
 
             // Se define la cantidad de bitmons iniciales
-            int bitmons_alive_count = 10;
+            int bitmons_alive_count = 30;
             // Tipos de bitmons
             string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" };
 
@@ -62,7 +62,7 @@ namespace BitmonLand
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Nieve1;
                     else
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Pasto1;
-                    cas.Dock = DockStyle.Fill;
+                    cas.Dock = DockStyle.None;
                     
                     MapLayout.Controls.Add(cas, c, r);
                 }
@@ -71,14 +71,26 @@ namespace BitmonLand
             List<Bitmon> bitmons_alive = new List<Bitmon>();
             foreach(Casilla c in MapLayout.Controls)
             {
-                if(random.Next(100) < 20) // Probabilidad de que aparezca un bitmon
+                if(random.Next(100) < 30) // Probabilidad de que aparezca un bitmon
                 {
                     if (bitmons_alive_count > 0)
                     {
                         bitmons_alive_count--;
                         Bitmon b = new Bitmon();
                         b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
+                        b.SizeMode = PictureBoxSizeMode.AutoSize;
                         c.AddOcupante(b);
+                    }
+                    if (random.Next(100) < 20) // Probabilidad de que aparezca un bitmon
+                    {
+                        if (bitmons_alive_count > 0)
+                        {
+                            bitmons_alive_count--;
+                            Bitmon b = new Bitmon();
+                            b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
+                            b.SizeMode = PictureBoxSizeMode.AutoSize;
+                            c.AddOcupante(b);
+                        }
                     }
                 }
             }

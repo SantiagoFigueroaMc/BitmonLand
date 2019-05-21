@@ -34,6 +34,7 @@ namespace BitmonLand
             if (ocupantes.Count() < 2)
             {
                 ocupantes.Add(bitmon);
+                this.Controls.Add(bitmon);
                 return true;
             }
             return false;
