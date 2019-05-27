@@ -13,6 +13,9 @@ namespace BitmonLand
         private string tipo;
         private string[] posibles_tipos = { "nieve", "agua", "pasto", "volcan", "arena" };
 
+        public int xy;
+        
+
         public Casilla()
         {
             ocupantes = new List<Bitmon>();
@@ -39,6 +42,8 @@ namespace BitmonLand
             }
             return false;
         }
+
+        // eliminar ocupante
 
         public string Tipo
         {

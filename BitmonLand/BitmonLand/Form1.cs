@@ -13,9 +13,9 @@ namespace BitmonLand
     public partial class MainForm : Form
     {
         public MainForm()
-            /* Este form equivale a la clase que se hace cargo de 
-             * armar el tablero, ubicar y mover a los bitmons.
-             */
+        /* Este form equivale a la clase que se hace cargo de 
+            * armar el tablero, ubicar y mover a los bitmons.
+            */
         {
             // Tableros de más de 400 casillas empiezan a tener problemas al renderizarse.
             // El máximo recomendado es 20 para ambos parametros.
@@ -63,12 +63,12 @@ namespace BitmonLand
                     else
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Pasto1;
                     cas.Dock = DockStyle.Fill;
-                    
                     MapLayout.Controls.Add(cas, c, r);
                 }
             }
             // Luego se colocan los bitmons iniciales
             List<Bitmon> bitmons_alive = new List<Bitmon>();
+            int contador = 0;
             foreach(Casilla c in MapLayout.Controls)
             {
                 if(random.Next(100) < 30) // Probabilidad de que aparezca un bitmon
@@ -78,20 +78,50 @@ namespace BitmonLand
                         bitmons_alive_count--;
                         Bitmon b = new Bitmon();
                         b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
+                        b.Posicion = contador;
                         c.AddOcupante(b);
                     }
-                    if (random.Next(100) < 20) // Probabilidad de que aparezca un bitmon
+                    if (random.Next(100) < 20) // Probabilidad de que aparezca un segundo bitmon
                     {
                         if (bitmons_alive_count > 0)
                         {
                             bitmons_alive_count--;
                             Bitmon b = new Bitmon();
                             b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
+                            b.Posicion = contador;
                             c.AddOcupante(b);
                         }
                     }
                 }
+                contador++;
             }
+        }
+
+        private void timer_mes_Tick(object sender, EventArgs e)
+        {
+            // recorrer bitmons_alive para mover a los wns
+            // 
+
+            // recorrer casillas del mapa para que interactuen los wns
+
+            // Hay que revisar el tipo de interaccion
+        }
+
+        private void Interactuar(Bitmon bitmon1, Bitmon bitmon2)
+        {
+
+        }
+
+        private void Amor(Bitmon bitmon1, Bitmon bitmon2)
+        {
+            // crear nuevo bitmon siguiendo las reglas
+            // agregar bitmon al mapa si es posible
+            // puede ser con un foreach, un contador y un limite aleatorio
+        }
+
+        private void Odio(Bitmon bitmon1, Bitmon bitmon2)
+        {
+            // pelear, y eliminar al bitmon perdedor de la casilla
         }
     }
 }
