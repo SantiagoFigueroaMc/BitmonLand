@@ -393,6 +393,7 @@
             this.Controls.Add(this.checkBox_ver_simulacion);
             this.Controls.Add(this.button_reset);
             this.Controls.Add(this.button_iniciar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Settings";
             this.Text = "Configuración";
             ((System.ComponentModel.ISupportInitialize)(this.columnas_nUpDown)).EndInit();
