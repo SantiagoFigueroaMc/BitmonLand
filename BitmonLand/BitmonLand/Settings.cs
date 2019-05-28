@@ -54,11 +54,18 @@ namespace BitmonLand
             filas = (int) fila_nUpDown.Value;
 
             decimal suma = numericUpDown_agua.Value + numericUpDown_arena.Value + numericUpDown_nieve.Value + numericUpDown_pasto.Value + numericUpDown_volcan.Value;
-            agua = numericUpDown_agua.Value / suma;
-            arena = numericUpDown_arena.Value / suma;
-            nieve = numericUpDown_nieve.Value / suma;
-            pasto = numericUpDown_pasto.Value / suma;
-            volcan = numericUpDown_volcan.Value / suma;
+            if (suma != 0)
+            {
+                agua = numericUpDown_agua.Value / suma;
+                arena = numericUpDown_arena.Value / suma;
+                nieve = numericUpDown_nieve.Value / suma;
+                pasto = numericUpDown_pasto.Value / suma;
+                volcan = numericUpDown_volcan.Value / suma;
+            }
+            else
+            {
+                MessageBox.Show("Ingrese al menos un valor distinto a cero en las probabilidades de los terrenos");
+            }
 
             meses = (int) numericUpDown_meses.Value;
             velocidad = (int) numericUpDown_velocidad.Value;
