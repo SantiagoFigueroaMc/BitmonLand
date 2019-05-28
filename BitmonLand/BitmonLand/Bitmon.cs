@@ -9,9 +9,9 @@ namespace BitmonLand
 {
     class Bitmon : PictureBox
     {
-        private string tipo;
-        private string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" };
-        private int mi_posicion;
+        protected string tipo;
+        protected string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" };
+        protected int mi_posicion;
         protected Random r = new Random();
         
 
@@ -62,6 +62,7 @@ namespace BitmonLand
         public virtual int Moverse(int columnas, int filas)
         {
             Random rand = new Random();
+            int posibleMovimiento;
             List<int> caso1 = new List<int>(); //esquina superior izquierda.
             List<int> caso2 = new List<int>(); //esqina superior derecha.
             List<int> caso3 = new List<int>(); //esquina inferior izquierda.
@@ -107,39 +108,39 @@ namespace BitmonLand
 
             if (mi_posicion == 0)
             {
-                mi_posicion += caso1[rand.Next(caso1.Count)];
+                posibleMovimiento = mi_posicion + caso1[rand.Next(caso1.Count)];
             }
             else if (col == columnas - 1)
             {
-                mi_posicion += caso2[rand.Next(caso2.Count)];
+                posibleMovimiento = mi_posicion + caso2[rand.Next(caso2.Count)];
             }
             else if (mi_posicion == (columnas * filas) - columnas)
             {
-                mi_posicion += caso3[rand.Next(caso3.Count)];
+                posibleMovimiento = mi_posicion + caso3[rand.Next(caso3.Count)];
             }
             else if (mi_posicion == (columnas * filas) - 1)
             {
-                mi_posicion += caso4[rand.Next(caso4.Count)];
+                posibleMovimiento = mi_posicion + caso4[rand.Next(caso4.Count)];
             }
             else if (filas > 2 && col == 0 && mi_posicion != 0 && (mi_posicion != (columnas * filas) - columnas))
             {
-                mi_posicion += caso5[rand.Next(caso5.Count)];
+                posibleMovimiento = mi_posicion + caso5[rand.Next(caso5.Count)];
             }
             else if (filas > 2 && (col - 1) == 0 && mi_posicion != columnas - 1 && (mi_posicion != (columnas * filas) - 1))
             {
-                mi_posicion += caso6[rand.Next(caso6.Count)];
+                posibleMovimiento = mi_posicion + caso6[rand.Next(caso6.Count)];
             }
             else if (col != 0 && mi_posicion > 0 && mi_posicion < columnas)
             {
-                mi_posicion += caso7[rand.Next(caso7.Count)];
+                posibleMovimiento = mi_posicion + caso7[rand.Next(caso7.Count)];
             }
             else if (col != 0 && (mi_posicion + 1) % columnas != 0 && mi_posicion > (filas * columnas) - columnas && mi_posicion < (filas * columnas) - 1)
             {
-                mi_posicion += caso8[rand.Next(caso8.Count)];
+                posibleMovimiento = mi_posicion + caso8[rand.Next(caso8.Count)];
             }
             else
             {
-                mi_posicion += rand.Next(-4, 5);
+                posibleMovimiento = mi_posicion + rand.Next(-4, 5);
             }
             //mi_posicion = rand_fil * columnas + rand_col;
             //Casillas[3].Borrar(this);
