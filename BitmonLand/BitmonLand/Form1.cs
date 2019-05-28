@@ -17,6 +17,8 @@ namespace BitmonLand
             * armar el tablero, ubicar y mover a los bitmons.
             */
         {
+            InitializeComponent();
+
             Settings settings = new Settings();
             if (settings.ShowDialog() == DialogResult.OK)
             {
@@ -44,7 +46,6 @@ namespace BitmonLand
             // Tipos de bitmons
             string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" };
 
-            InitializeComponent();
 
             timer_mes.Interval = settings.velocidad; // duracion en milisegundos de cada mes
             int meses_restantes = settings.meses; // cantidad de meses a simular

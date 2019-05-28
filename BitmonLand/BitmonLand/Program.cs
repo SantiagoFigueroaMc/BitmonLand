@@ -16,8 +16,7 @@ namespace BitmonLand
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MainForm Simulation = new MainForm();
-            Application.Run(Simulation);
+            Application.Run(new MainForm());
         }
     }
 }

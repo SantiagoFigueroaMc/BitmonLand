@@ -54,6 +54,11 @@
             this.numericUpDown_velocidad = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.button_guardar = new System.Windows.Forms.Button();
+            this.progressBar_pasto = new System.Windows.Forms.ProgressBar();
+            this.progressBar_nieve = new System.Windows.Forms.ProgressBar();
+            this.progressBar_volcan = new System.Windows.Forms.ProgressBar();
+            this.progressBar_arena = new System.Windows.Forms.ProgressBar();
+            this.progressBar_agua = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.columnas_nUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fila_nUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_agua)).BeginInit();
@@ -69,7 +74,7 @@
             // button_iniciar
             // 
             this.button_iniciar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button_iniciar.Location = new System.Drawing.Point(159, 160);
+            this.button_iniciar.Location = new System.Drawing.Point(274, 134);
             this.button_iniciar.Name = "button_iniciar";
             this.button_iniciar.Size = new System.Drawing.Size(75, 23);
             this.button_iniciar.TabIndex = 0;
@@ -80,7 +85,7 @@
             // 
             // button_reset
             // 
-            this.button_reset.Location = new System.Drawing.Point(159, 134);
+            this.button_reset.Location = new System.Drawing.Point(274, 108);
             this.button_reset.Name = "button_reset";
             this.button_reset.Size = new System.Drawing.Size(75, 23);
             this.button_reset.TabIndex = 1;
@@ -92,7 +97,7 @@
             // checkBox_ver_simulacion
             // 
             this.checkBox_ver_simulacion.AutoSize = true;
-            this.checkBox_ver_simulacion.Location = new System.Drawing.Point(129, 86);
+            this.checkBox_ver_simulacion.Location = new System.Drawing.Point(264, 36);
             this.checkBox_ver_simulacion.Name = "checkBox_ver_simulacion";
             this.checkBox_ver_simulacion.Size = new System.Drawing.Size(94, 17);
             this.checkBox_ver_simulacion.TabIndex = 2;
@@ -148,7 +153,7 @@
             // 
             // numericUpDown_agua
             // 
-            this.numericUpDown_agua.DecimalPlaces = 1;
+            this.numericUpDown_agua.DecimalPlaces = 2;
             this.numericUpDown_agua.Increment = new decimal(new int[] {
             1,
             0,
@@ -176,7 +181,7 @@
             // 
             // numericUpDown_arena
             // 
-            this.numericUpDown_arena.DecimalPlaces = 1;
+            this.numericUpDown_arena.DecimalPlaces = 2;
             this.numericUpDown_arena.Increment = new decimal(new int[] {
             1,
             0,
@@ -204,7 +209,7 @@
             // 
             // numericUpDown_volcan
             // 
-            this.numericUpDown_volcan.DecimalPlaces = 1;
+            this.numericUpDown_volcan.DecimalPlaces = 2;
             this.numericUpDown_volcan.Increment = new decimal(new int[] {
             1,
             0,
@@ -232,7 +237,7 @@
             // 
             // numericUpDown_nieve
             // 
-            this.numericUpDown_nieve.DecimalPlaces = 1;
+            this.numericUpDown_nieve.DecimalPlaces = 2;
             this.numericUpDown_nieve.Increment = new decimal(new int[] {
             1,
             0,
@@ -260,7 +265,7 @@
             // 
             // numericUpDown_pasto
             // 
-            this.numericUpDown_pasto.DecimalPlaces = 1;
+            this.numericUpDown_pasto.DecimalPlaces = 2;
             this.numericUpDown_pasto.Increment = new decimal(new int[] {
             1,
             0,
@@ -288,7 +293,7 @@
             // 
             // numericUpDown_bitmons
             // 
-            this.numericUpDown_bitmons.Location = new System.Drawing.Point(185, 7);
+            this.numericUpDown_bitmons.Location = new System.Drawing.Point(309, 7);
             this.numericUpDown_bitmons.Name = "numericUpDown_bitmons";
             this.numericUpDown_bitmons.Size = new System.Drawing.Size(49, 20);
             this.numericUpDown_bitmons.TabIndex = 18;
@@ -298,7 +303,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(126, 9);
+            this.label8.Location = new System.Drawing.Point(250, 9);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 13);
             this.label8.TabIndex = 17;
@@ -307,7 +312,7 @@
             // 
             // numericUpDown_meses
             // 
-            this.numericUpDown_meses.Location = new System.Drawing.Point(185, 33);
+            this.numericUpDown_meses.Location = new System.Drawing.Point(185, 7);
             this.numericUpDown_meses.Name = "numericUpDown_meses";
             this.numericUpDown_meses.Size = new System.Drawing.Size(49, 20);
             this.numericUpDown_meses.TabIndex = 20;
@@ -317,7 +322,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(126, 35);
+            this.label9.Location = new System.Drawing.Point(126, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 13);
             this.label9.TabIndex = 19;
@@ -331,7 +336,7 @@
             0,
             0,
             0});
-            this.numericUpDown_velocidad.Location = new System.Drawing.Point(185, 59);
+            this.numericUpDown_velocidad.Location = new System.Drawing.Point(185, 33);
             this.numericUpDown_velocidad.Maximum = new decimal(new int[] {
             15000,
             0,
@@ -346,7 +351,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(126, 61);
+            this.label10.Location = new System.Drawing.Point(126, 35);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(54, 13);
             this.label10.TabIndex = 21;
@@ -355,7 +360,7 @@
             // 
             // button_guardar
             // 
-            this.button_guardar.Location = new System.Drawing.Point(159, 108);
+            this.button_guardar.Location = new System.Drawing.Point(274, 82);
             this.button_guardar.Name = "button_guardar";
             this.button_guardar.Size = new System.Drawing.Size(75, 23);
             this.button_guardar.TabIndex = 23;
@@ -364,11 +369,51 @@
             this.button_guardar.UseVisualStyleBackColor = true;
             this.button_guardar.Click += new System.EventHandler(this.button_guardar_Click);
             // 
+            // progressBar_pasto
+            // 
+            this.progressBar_pasto.Location = new System.Drawing.Point(126, 85);
+            this.progressBar_pasto.Name = "progressBar_pasto";
+            this.progressBar_pasto.Size = new System.Drawing.Size(100, 20);
+            this.progressBar_pasto.TabIndex = 24;
+            // 
+            // progressBar_nieve
+            // 
+            this.progressBar_nieve.Location = new System.Drawing.Point(126, 111);
+            this.progressBar_nieve.Name = "progressBar_nieve";
+            this.progressBar_nieve.Size = new System.Drawing.Size(100, 20);
+            this.progressBar_nieve.TabIndex = 25;
+            // 
+            // progressBar_volcan
+            // 
+            this.progressBar_volcan.Location = new System.Drawing.Point(126, 137);
+            this.progressBar_volcan.Name = "progressBar_volcan";
+            this.progressBar_volcan.Size = new System.Drawing.Size(100, 20);
+            this.progressBar_volcan.TabIndex = 26;
+            // 
+            // progressBar_arena
+            // 
+            this.progressBar_arena.Location = new System.Drawing.Point(126, 163);
+            this.progressBar_arena.Name = "progressBar_arena";
+            this.progressBar_arena.Size = new System.Drawing.Size(100, 20);
+            this.progressBar_arena.TabIndex = 27;
+            // 
+            // progressBar_agua
+            // 
+            this.progressBar_agua.Location = new System.Drawing.Point(126, 59);
+            this.progressBar_agua.Name = "progressBar_agua";
+            this.progressBar_agua.Size = new System.Drawing.Size(100, 20);
+            this.progressBar_agua.TabIndex = 28;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(244, 191);
+            this.ClientSize = new System.Drawing.Size(391, 191);
+            this.Controls.Add(this.progressBar_agua);
+            this.Controls.Add(this.progressBar_arena);
+            this.Controls.Add(this.progressBar_volcan);
+            this.Controls.Add(this.progressBar_nieve);
+            this.Controls.Add(this.progressBar_pasto);
             this.Controls.Add(this.button_guardar);
             this.Controls.Add(this.numericUpDown_velocidad);
             this.Controls.Add(this.label10);
@@ -438,5 +483,10 @@
         private System.Windows.Forms.NumericUpDown numericUpDown_velocidad;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button_guardar;
+        private System.Windows.Forms.ProgressBar progressBar_pasto;
+        private System.Windows.Forms.ProgressBar progressBar_nieve;
+        private System.Windows.Forms.ProgressBar progressBar_volcan;
+        private System.Windows.Forms.ProgressBar progressBar_arena;
+        private System.Windows.Forms.ProgressBar progressBar_agua;
     }
 }

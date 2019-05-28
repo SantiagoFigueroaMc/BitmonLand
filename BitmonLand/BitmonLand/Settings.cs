@@ -110,26 +110,31 @@ namespace BitmonLand
         private void numericUpDown_agua_ValueChanged(object sender, EventArgs e)
         {
             button_iniciar.Visible = false;
+            progressBar_agua.Value = (int)(numericUpDown_agua.Value * 100);
         }
 
         private void numericUpDown_pasto_ValueChanged(object sender, EventArgs e)
         {
             button_iniciar.Visible = false;
+            progressBar_pasto.Value = (int)(numericUpDown_pasto.Value * 100);
         }
 
         private void numericUpDown_nieve_ValueChanged(object sender, EventArgs e)
         {
             button_iniciar.Visible = false;
+            progressBar_nieve.Value = (int)(numericUpDown_nieve.Value * 100);
         }
 
         private void numericUpDown_volcan_ValueChanged(object sender, EventArgs e)
         {
             button_iniciar.Visible = false;
+            progressBar_volcan.Value = (int)(numericUpDown_volcan.Value * 100);
         }
 
         private void numericUpDown_arena_ValueChanged(object sender, EventArgs e)
         {
             button_iniciar.Visible = false;
+            progressBar_arena.Value = (int)(numericUpDown_arena.Value * 100);
         }
 
         private void numericUpDown_bitmons_ValueChanged(object sender, EventArgs e)
