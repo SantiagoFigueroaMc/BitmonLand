@@ -21,5 +21,6 @@ namespace BitmonLand
             Edad = 0;
         }
 
+
     }
 }

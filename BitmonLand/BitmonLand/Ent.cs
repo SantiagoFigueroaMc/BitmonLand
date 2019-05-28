@@ -20,5 +20,10 @@ namespace BitmonLand
             Tvida = r.Next(3, 5);
             Edad = 0;
         }
+
+        public override int Moverse(int columnas, int filas)
+        {
+            return 0;
+        }
     }
 }
