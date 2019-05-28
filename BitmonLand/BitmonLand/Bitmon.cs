@@ -12,7 +12,7 @@ namespace BitmonLand
         private string tipo;
         private string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" };
         private int mi_posicion;
-       
+        protected Random r = new Random();
         
 
         public Bitmon()

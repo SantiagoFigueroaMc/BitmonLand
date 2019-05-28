@@ -10,7 +10,17 @@ namespace BitmonLand
     {
         int ptVida;
         int ptAtaque;
-        int ptEdad;
+        int Edad;
+        int Tvida; 
+
+
+        public Gofue()
+        {
+            ptVida = r.Next(40, 60);
+            ptAtaque = r.Next(10, 21);
+            Tvida = r.Next(4, 7);
+            Edad = 0;
+        }
 
 
     }
