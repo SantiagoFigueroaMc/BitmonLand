@@ -150,7 +150,7 @@ namespace BitmonLand
             }
             //mi_posicion = rand_fil * columnas + rand_col;
             //Casillas[3].Borrar(this);
-            return mi_posicion;
+            return posibleMovimiento;
         }
     }
 }
