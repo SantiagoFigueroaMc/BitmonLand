@@ -6,22 +6,20 @@ using System.Threading.Tasks;
 
 namespace BitmonLand
 {
-    class Gofue : Bitmon
+    class Doti : Bitmon
     {
         int ptVida;
         int ptAtaque;
+        int Tvida;
         int Edad;
-        int Tvida; 
 
-
-        public Gofue()
+        public Doti()
         {
-            ptVida = r.Next(40, 60);
-            ptAtaque = r.Next(10, 21);
+            ptVida = r.Next(100, 500);
+            ptAtaque = r.Next(100, 150);
             Tvida = r.Next(4, 7);
             Edad = 0;
         }
-
 
     }
 }

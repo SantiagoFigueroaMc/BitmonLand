@@ -79,6 +79,7 @@ namespace BitmonLand
             }
             // Luego se colocan los bitmons iniciales
             List<Bitmon> bitmons_alive = new List<Bitmon>();
+            List<Bitmon> bithalla = new List<Bitmon>();
             int contador = 0;
             foreach(Casilla c in MapLayout.Controls)
             {
@@ -134,5 +135,6 @@ namespace BitmonLand
         {
             // pelear, y eliminar al bitmon perdedor de la casilla
         }
+
     }
 }
