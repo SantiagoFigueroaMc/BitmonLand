@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BitmonLand
 {
-    class Dorvalo
+    class Dorvalo : Bitmon
     {
+        int ptVida;
+        int ptAtaque;
+        int ptEdad;
     }
 }

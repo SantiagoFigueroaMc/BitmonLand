@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace BitmonLand
 {
-    class Gofue : Bitmon
+    class Ent
     {
         int ptVida;
         int ptAtaque;
         int ptEdad;
-
 
     }
 }
