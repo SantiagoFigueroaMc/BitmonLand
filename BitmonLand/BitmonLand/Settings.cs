@@ -54,26 +54,11 @@ namespace BitmonLand
             filas = (int) fila_nUpDown.Value;
 
             decimal suma = numericUpDown_agua.Value + numericUpDown_arena.Value + numericUpDown_nieve.Value + numericUpDown_pasto.Value + numericUpDown_volcan.Value;
-            if (numericUpDown_agua.Value != 0)
-                agua = suma / numericUpDown_agua.Value;
-            else
-                agua = 0;
-            if (numericUpDown_arena.Value != 0)
-                arena = suma / numericUpDown_arena.Value;
-            else
-                arena = 0;
-            if (numericUpDown_nieve.Value != 0)
-                nieve = suma / numericUpDown_nieve.Value;
-            else
-                nieve = 0;
-            if (numericUpDown_pasto.Value != 0)
-                pasto = suma / numericUpDown_pasto.Value;
-            else
-                pasto = 0;
-            if (numericUpDown_volcan.Value != 0)
-                volcan = suma / numericUpDown_volcan.Value;
-            else
-                volcan = 0;
+            agua = numericUpDown_agua.Value / suma;
+            arena = numericUpDown_arena.Value / suma;
+            nieve = numericUpDown_nieve.Value / suma;
+            pasto = numericUpDown_pasto.Value / suma;
+            volcan = numericUpDown_volcan.Value / suma;
 
             meses = (int) numericUpDown_meses.Value;
             velocidad = (int) numericUpDown_velocidad.Value;
@@ -83,6 +68,11 @@ namespace BitmonLand
             else
                 bitmons = filas * columnas - 1;
 
+            numericUpDown_agua.Value = agua;
+            numericUpDown_arena.Value = arena;
+            numericUpDown_nieve.Value = nieve;
+            numericUpDown_pasto.Value = pasto;
+            numericUpDown_volcan.Value = volcan;
 
             button_iniciar.Visible = true;
         }
