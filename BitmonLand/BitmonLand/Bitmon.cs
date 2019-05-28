@@ -67,7 +67,7 @@ namespace BitmonLand
             int rand_fil = 7;
 
             mi_posicion = rand_fil * columnas + rand_col;
-            Casillas[3].Borrar(this);
+            //Casillas[3].Borrar(this);
             return mi_posicion;
         }
     }

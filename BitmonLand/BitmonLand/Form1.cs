@@ -17,29 +17,40 @@ namespace BitmonLand
             * armar el tablero, ubicar y mover a los bitmons.
             */
         {
+            Settings settings = new Settings();
+            if (settings.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Iniciando simulacion");
+            }
+
+
             // Tableros de más de 400 casillas empiezan a tener problemas al renderizarse.
             // El máximo recomendado es 20 para ambos parametros.
-            int rows = 10;
-            int cols = 10;
+            int rows = settings.filas;
+            int cols = settings.columnas;
 
             // Se define la probabilidad de cada tipo de terreno.
             // El 100% sería la suma de estos valores, puede ser 80 o 130 por ejemplo.
-            int pasto_prob = 40;
-            int volcan_prob = 1;
-            int agua_prob = 10;
-            int arena_prob = 20;
-            int nieve_prob = 8;
+            int pasto_prob = (int)(settings.pasto * 100);
+            int volcan_prob = (int)(settings.volcan * 100);
+            int agua_prob = (int)(settings.agua * 100);
+            int arena_prob = (int)(settings.arena * 100);
+            int nieve_prob = (int)(settings.nieve * 100);
             // Tipos de terrenos
             string[] posibles_tipos = { "nieve", "agua", "pasto", "volcan", "arena" };
 
             // Se define la cantidad de bitmons iniciales
-            int bitmons_alive_count = 30;
+            int bitmons_initial_count = settings.bitmons;
             // Tipos de bitmons
             string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" };
 
+            InitializeComponent();
+
+            timer_mes.Interval = settings.velocidad; // duracion en milisegundos de cada mes
+            int meses_restantes = settings.meses; // cantidad de meses a simular
+
             Random random = new Random();
 
-            InitializeComponent();
 
             MapLayout.ColumnCount = cols;
             MapLayout.RowCount = rows;
@@ -73,9 +84,9 @@ namespace BitmonLand
             {
                 if(random.Next(100) < 30) // Probabilidad de que aparezca un bitmon
                 {
-                    if (bitmons_alive_count > 0)
+                    if (bitmons_initial_count > 0)
                     {
-                        bitmons_alive_count--;
+                        bitmons_initial_count--;
                         Bitmon b = new Bitmon();
                         b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
                         b.Posicion = contador;
@@ -83,9 +94,9 @@ namespace BitmonLand
                     }
                     if (random.Next(100) < 20) // Probabilidad de que aparezca un segundo bitmon
                     {
-                        if (bitmons_alive_count > 0)
+                        if (bitmons_initial_count > 0)
                         {
-                            bitmons_alive_count--;
+                            bitmons_initial_count--;
                             Bitmon b = new Bitmon();
                             b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
                             b.Posicion = contador;
