@@ -12,6 +12,11 @@ namespace BitmonLand
 {
     public partial class MainForm : Form
     {
+        List<Bitmon> bitmons_alive;
+        int rows;
+        int cols;
+        int mes_actual = 0;
+        int meses_restantes = 0;
         public MainForm()
         /* Este form equivale a la clase que se hace cargo de 
             * armar el tablero, ubicar y mover a los bitmons.
@@ -28,8 +33,8 @@ namespace BitmonLand
 
             // Tableros de más de 400 casillas empiezan a tener problemas al renderizarse.
             // El máximo recomendado es 20 para ambos parametros.
-            int rows = settings.filas;
-            int cols = settings.columnas;
+            rows = settings.filas;
+            cols = settings.columnas;
 
             // Se define la probabilidad de cada tipo de terreno.
             // El 100% sería la suma de estos valores, puede ser 80 o 130 por ejemplo.
@@ -48,9 +53,11 @@ namespace BitmonLand
 
 
             timer_mes.Interval = settings.velocidad; // duracion en milisegundos de cada mes
-            int meses_restantes = settings.meses; // cantidad de meses a simular
+            meses_restantes = settings.meses; // cantidad de meses a simular
+            label_meses_restantes.Text = $"Meses restantes: {meses_restantes}";
 
             Random random = new Random();
+
 
 
             MapLayout.ColumnCount = cols;
@@ -79,7 +86,7 @@ namespace BitmonLand
                 }
             }
             // Luego se colocan los bitmons iniciales
-            List<Bitmon> bitmons_alive = new List<Bitmon>();
+            bitmons_alive = new List<Bitmon>();
             List<Bitmon> bithalla = new List<Bitmon>();
             int contador = 0;
             foreach(Casilla c in MapLayout.Controls)
@@ -108,16 +115,47 @@ namespace BitmonLand
                 }
                 contador++;
             }
+            timer_mes.Start();
         }
 
         private void timer_mes_Tick(object sender, EventArgs e)
         {
-            // recorrer bitmons_alive para mover a los wns
-            // 
+            if (mes_actual <= meses_restantes)
+            {
+                label_mes_actual.Text = $"Mes actual: {mes_actual}";
+                // recorrer bitmons_alive para mover a los wns. 
+                // Si los bitmons no se mueven, puede ser porque se quedan en una casilla nueva, en vez de la de maplayout.
+                foreach(Bitmon bitmon in bitmons_alive)
+                {
+                    int nueva_posicion = bitmon.Moverse(cols, rows);
+                    Casilla nueva_casilla = (Casilla)MapLayout.Controls[nueva_posicion];
+                    if (nueva_casilla.ContarOcupantes < 2)
+                    {
+                        nueva_casilla.AddOcupante(bitmon);
+                        bitmon.Posicion = nueva_posicion;
+                    }
+                }
 
-            // recorrer casillas del mapa para que interactuen los wns
+                // recorrer casillas del mapa para que interactuen los wns
+                foreach(Casilla casilla in MapLayout.Controls)
+                {
+                    if (casilla.ContarOcupantes == 2)
+                    {
+                        if(casilla.Ocupantes[0].Tipo == casilla.Ocupantes[1].Tipo)
+                        {
+                            Amor(casilla.Ocupantes[0], casilla.Ocupantes[1]);
+                        }
+                    }
+                    foreach(Bitmon bitmon in casilla.Ocupantes)
+                    {
+                        casilla.Tipo = bitmon.InteractuarTerreno(casilla.Tipo);
+                    }
+                }
 
-            // Hay que revisar el tipo de interaccion
+                // Hay que revisar el tipo de interaccion
+
+                mes_actual++;
+            }
         }
 
         private void Interactuar(Bitmon bitmon1, Bitmon bitmon2)

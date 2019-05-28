@@ -21,7 +21,7 @@ namespace BitmonLand
             ocupantes = new List<Bitmon>();
         }
 
-        public List<Bitmon> OcupantesSetter
+        public List<Bitmon> Ocupantes
         {
             set
             {
@@ -29,6 +29,10 @@ namespace BitmonLand
                 {
                     ocupantes = value;
                 }
+            }
+            get
+            {
+                return ocupantes; 
             }
         }
 
@@ -57,6 +61,14 @@ namespace BitmonLand
                 {
                     tipo = value;
                 }
+            }
+        }
+
+        public int ContarOcupantes
+        {
+            get
+            {
+                return ocupantes.Count();
             }
         }
     }
