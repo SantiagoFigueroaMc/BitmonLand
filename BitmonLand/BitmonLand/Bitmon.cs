@@ -59,6 +59,12 @@ namespace BitmonLand
             }
         }
 
+        public virtual string InteractuarTerreno(string tipo_terreno_pisado)
+        {
+            // aqui se baja la vida el wn si está parado en algo malo, y devuelve un tipo de terreno aunque no lo cambie.
+            return tipo_terreno_pisado;
+        }
+
         public virtual int Moverse(int columnas, int filas)
         {
             int fila = mi_posicion / filas;
