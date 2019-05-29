@@ -152,5 +152,7 @@ namespace BitmonLand
             //Casillas[3].Borrar(this);
             return mi_posicion;
         }
+
+
     }
 }
