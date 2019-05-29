@@ -8,11 +8,6 @@ namespace BitmonLand
 {
     class Gofue : Bitmon
     {
-        int ptVida;
-        int ptAtaque;
-        int Edad;
-        int Tvida; 
-
 
         public Gofue()
         {
@@ -31,6 +26,7 @@ namespace BitmonLand
 
             else if(tipo_terreno_pisado == "nieve")
             {
+                Edad -= 1;
                 return "agua";
             }
             //else if (tipo_terreno_pisado malo)

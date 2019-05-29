@@ -8,10 +8,6 @@ namespace BitmonLand
 {
     class Taplan : Bitmon
     {
-        int ptVida;
-        int ptAtaque;
-        int Edad;
-        int Tvida;
 
         public Taplan()
         {

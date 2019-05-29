@@ -8,10 +8,6 @@ namespace BitmonLand
 {
     class Doti : Bitmon
     {
-        int ptVida;
-        int ptAtaque;
-        int Tvida;
-        int Edad;
 
         public Doti()
         {
