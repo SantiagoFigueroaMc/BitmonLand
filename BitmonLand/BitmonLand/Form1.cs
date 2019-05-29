@@ -12,7 +12,8 @@ namespace BitmonLand
 {
     public partial class MainForm : Form
     {
-        List<Bitmon> bitmons_alive;
+        List<Bitmon> bitmons_alive = new List<Bitmon>();
+        List<Bitmon> bithalla = new List<Bitmon>();
         int rows;
         int cols;
         int mes_actual = 0;
@@ -48,6 +49,9 @@ namespace BitmonLand
 
             // Se define la cantidad de bitmons iniciales
             int bitmons_initial_count = settings.bitmons;
+            label_bitmons_vivos.Text = $"Bitmons vivos: {bitmons_initial_count}";
+            label_bitmons_muertos.Text = $"Bitmons muertos: 0";
+
             // Tipos de bitmons
             string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" };
 
@@ -57,11 +61,13 @@ namespace BitmonLand
             label_meses_restantes.Text = $"Meses restantes: {meses_restantes}";
 
             Random random = new Random();
-
-
-
+            
             MapLayout.ColumnCount = cols;
             MapLayout.RowCount = rows;
+            MapLayout.Dock = DockStyle.None;
+            MapLayout.Padding = new Padding(1,1,1,1);
+            MapLayout.Controls.Clear();
+            
             
             // A continuación se arma el tablero
             // Primero se colocan los tipos de terreno
@@ -81,37 +87,38 @@ namespace BitmonLand
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Nieve1;
                     else
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Pasto1;
+                    cas.Margin = new Padding(0,0,0,0);
                     cas.Dock = DockStyle.Fill;
+                    
                     MapLayout.Controls.Add(cas, c, r);
                 }
             }
+
+            //definir posiciones de los bitmons iniciales, sin repetir posicion inicial
+            List<int> posiciones_iniciales = new List<int>();
+            for (int j = 0; j < bitmons_initial_count; j++)
+            {
+                int r_p = random.Next(cols * rows);
+                while (posiciones_iniciales.Contains(r_p))
+                {
+                    r_p = random.Next(cols * rows);
+                }
+                posiciones_iniciales.Add(r_p);
+            }
+
             // Luego se colocan los bitmons iniciales
-            bitmons_alive = new List<Bitmon>();
-            List<Bitmon> bithalla = new List<Bitmon>();
             int contador = 0;
             foreach(Casilla c in MapLayout.Controls)
             {
-                if(random.Next(100) < 30) // Probabilidad de que aparezca un bitmon
+                if (posiciones_iniciales.Contains(contador))
                 {
-                    if (bitmons_initial_count > 0)
-                    {
-                        bitmons_initial_count--;
-                        Bitmon b = new Bitmon();
-                        b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
-                        b.Posicion = contador;
-                        c.AddOcupante(b);
-                    }
-                    if (random.Next(100) < 20) // Probabilidad de que aparezca un segundo bitmon
-                    {
-                        if (bitmons_initial_count > 0)
-                        {
-                            bitmons_initial_count--;
-                            Bitmon b = new Bitmon();
-                            b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
-                            b.Posicion = contador;
-                            c.AddOcupante(b);
-                        }
-                    }
+                    Bitmon b = new Bitmon();
+                    b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count())); // se define un tipo aleatorio
+                    b.Posicion = contador;
+                    b.SizeMode = PictureBoxSizeMode.Zoom;
+                    b.Size = new Size((int)(600 / cols / 3), (int)(600 / cols / 3));
+                    c.AddOcupante(b);
+                    bitmons_alive.Add(b);
                 }
                 contador++;
             }
@@ -127,12 +134,29 @@ namespace BitmonLand
                 // Si los bitmons no se mueven, puede ser porque se quedan en una casilla nueva, en vez de la de maplayout.
                 foreach(Bitmon bitmon in bitmons_alive)
                 {
+                    int antigua_posicion = bitmon.Posicion;
                     int nueva_posicion = bitmon.Moverse(cols, rows);
                     Casilla nueva_casilla = (Casilla)MapLayout.Controls[nueva_posicion];
                     if (nueva_casilla.ContarOcupantes < 2)
                     {
-                        nueva_casilla.AddOcupante(bitmon);
-                        bitmon.Posicion = nueva_posicion;
+                        if (bitmon.Tipo == "Wetar")
+                        {
+                            if (nueva_casilla.Tipo == "agua")
+                            {
+                                nueva_casilla.AddOcupante(bitmon);
+                                bitmon.Posicion = nueva_posicion;
+                            }
+                        }
+                        else
+                        {
+                            nueva_casilla.AddOcupante(bitmon);
+                            bitmon.Posicion = nueva_posicion;
+
+                        }
+                    }
+                    else
+                    {
+                        bitmon.Posicion = antigua_posicion;
                     }
                 }
 
