@@ -56,7 +56,7 @@ namespace BitmonLand
             string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" }; // santiago, falta Doti
 
 
-            timer_mes.Interval = settings.velocidad; // duracion en milisegundos de cada mes
+            timer_mes.Interval = (int)(settings.velocidad); // duracion en milisegundos de cada mes
             meses_restantes = settings.meses; // cantidad de meses a simular
             label_meses_restantes.Text = $"Meses restantes: {meses_restantes}";
 

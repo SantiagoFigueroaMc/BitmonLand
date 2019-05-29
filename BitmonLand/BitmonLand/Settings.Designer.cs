@@ -123,10 +123,20 @@
             0,
             0,
             0});
+            this.columnas_nUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.columnas_nUpDown.Name = "columnas_nUpDown";
             this.columnas_nUpDown.Size = new System.Drawing.Size(49, 20);
             this.columnas_nUpDown.TabIndex = 4;
             this.toolTip1.SetToolTip(this.columnas_nUpDown, "Cantidad de columnas");
+            this.columnas_nUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.columnas_nUpDown.ValueChanged += new System.EventHandler(this.columnas_nUpDown_ValueChanged);
             // 
             // fila_nUpDown
@@ -137,10 +147,20 @@
             0,
             0,
             0});
+            this.fila_nUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.fila_nUpDown.Name = "fila_nUpDown";
             this.fila_nUpDown.Size = new System.Drawing.Size(49, 20);
             this.fila_nUpDown.TabIndex = 6;
             this.toolTip1.SetToolTip(this.fila_nUpDown, "Cantidad de filas");
+            this.fila_nUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.fila_nUpDown.ValueChanged += new System.EventHandler(this.fila_nUpDown_ValueChanged);
             // 
             // label2
@@ -324,10 +344,20 @@
             // numericUpDown_meses
             // 
             this.numericUpDown_meses.Location = new System.Drawing.Point(185, 7);
+            this.numericUpDown_meses.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown_meses.Name = "numericUpDown_meses";
             this.numericUpDown_meses.Size = new System.Drawing.Size(49, 20);
             this.numericUpDown_meses.TabIndex = 20;
             this.toolTip1.SetToolTip(this.numericUpDown_meses, "Cantidad de meses a simular.");
+            this.numericUpDown_meses.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown_meses.ValueChanged += new System.EventHandler(this.numericUpDown_meses_ValueChanged);
             // 
             // label9
@@ -342,6 +372,7 @@
             // 
             // numericUpDown_velocidad
             // 
+            this.numericUpDown_velocidad.DecimalPlaces = 2;
             this.numericUpDown_velocidad.Increment = new decimal(new int[] {
             100,
             0,
@@ -349,14 +380,24 @@
             0});
             this.numericUpDown_velocidad.Location = new System.Drawing.Point(185, 33);
             this.numericUpDown_velocidad.Maximum = new decimal(new int[] {
-            15000,
+            60,
             0,
             0,
             0});
+            this.numericUpDown_velocidad.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.numericUpDown_velocidad.Name = "numericUpDown_velocidad";
             this.numericUpDown_velocidad.Size = new System.Drawing.Size(49, 20);
             this.numericUpDown_velocidad.TabIndex = 22;
-            this.toolTip1.SetToolTip(this.numericUpDown_velocidad, "Duración en milisegundos de cada mes");
+            this.toolTip1.SetToolTip(this.numericUpDown_velocidad, "Meses por segundo");
+            this.numericUpDown_velocidad.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.numericUpDown_velocidad.Visible = false;
             this.numericUpDown_velocidad.ValueChanged += new System.EventHandler(this.numericUpDown_velocidad_ValueChanged);
             // 
@@ -368,7 +409,7 @@
             this.label_velocidad.Size = new System.Drawing.Size(54, 13);
             this.label_velocidad.TabIndex = 21;
             this.label_velocidad.Text = "Velocidad";
-            this.toolTip1.SetToolTip(this.label_velocidad, "Duración en milisegundos de cada mes");
+            this.toolTip1.SetToolTip(this.label_velocidad, "Meses por segundo");
             this.label_velocidad.Visible = false;
             // 
             // button_guardar

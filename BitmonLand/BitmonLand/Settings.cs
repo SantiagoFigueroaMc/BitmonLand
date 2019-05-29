@@ -15,7 +15,7 @@ namespace BitmonLand
         public int columnas = 7;
         public int filas = 7;
         public int meses = 12;
-        public int velocidad = 2000; // duración de cada tick del reloj en milisegundos
+        public decimal velocidad = 0.5m; // meses por segundo
         public int bitmons = 10;
         public decimal agua = 0.2m;
         public decimal pasto = 0.2m;
@@ -73,7 +73,7 @@ namespace BitmonLand
 
             meses = (int) numericUpDown_meses.Value;
             numericUpDown_meses.Font = new Font(numericUpDown_meses.Font, FontStyle.Regular);
-            velocidad = (int) numericUpDown_velocidad.Value;
+            velocidad = 1000 / numericUpDown_velocidad.Value;
             numericUpDown_velocidad.Font = new Font(numericUpDown_velocidad.Font, FontStyle.Regular);
 
             if (numericUpDown_bitmons.Value < columnas * filas)
@@ -119,7 +119,7 @@ namespace BitmonLand
 
             numericUpDown_meses.Value = 12;
             numericUpDown_meses.Font = new Font(numericUpDown_meses.Font, FontStyle.Regular);
-            numericUpDown_velocidad.Value = 2000;
+            numericUpDown_velocidad.Value = 0.5m;
             numericUpDown_velocidad.Font = new Font(numericUpDown_velocidad.Font, FontStyle.Regular);
 
             numericUpDown_bitmons.Value = bitmons;
