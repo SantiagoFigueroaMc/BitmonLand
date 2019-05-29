@@ -53,7 +53,7 @@ namespace BitmonLand
             label_bitmons_muertos.Text = $"Bitmons muertos: 0";
 
             // Tipos de bitmons
-            string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" };
+            string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" }; // santiago, falta Doti
 
 
             timer_mes.Interval = settings.velocidad; // duracion en milisegundos de cada mes
@@ -184,7 +184,20 @@ namespace BitmonLand
 
         private void Interactuar(Bitmon bitmon1, Bitmon bitmon2)
         {
+            if ((bitmon1.Tipo=="Gofue" && bitmon2.Tipo=="Taplan")||(bitmon1.Tipo == "Taplan" && bitmon2.Tipo == "Gofue"))
+            {
+                this.Odio(bitmon1, bitmon2);
+            }
+            else if((bitmon1.Tipo == "Wetar" && bitmon2.Tipo == "Dorvalo")|| (bitmon1.Tipo == "Wetar" && bitmon2.Tipo == "Dorvalo"))
+            {
+                this.Odio(bitmon1, bitmon2);
+            }
+            else
+            {
+                this.Amor(bitmon1, bitmon2);
+            }
 
+        
         }
 
         private void Amor(Bitmon bitmon1, Bitmon bitmon2)
@@ -196,7 +209,25 @@ namespace BitmonLand
 
         private void Odio(Bitmon bitmon1, Bitmon bitmon2)
         {
-            // pelear, y eliminar al bitmon perdedor de la casilla
+            int vida1 = bitmon1.getvida();
+            int vida2 = bitmon2.getvida();
+            int ataque1 = bitmon1.getataque();
+            int ataque2 = bitmon2.getataque();
+
+            while(vida1>0 && vida2 > 0)
+            {
+                vida1 -= ataque2;
+                vida2 -= ataque1;
+
+                if (vida1 < 1)
+                {
+                    bitmons_alive.Remove(bitmon1); 
+                }
+                if (vida2 < 1)
+                {
+                    bitmons_alive.Remove(bitmon2);
+                }
+            }
         }
 
     }

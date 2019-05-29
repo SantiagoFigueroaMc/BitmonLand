@@ -8,10 +8,6 @@ namespace BitmonLand
 {
     class Wetar : Bitmon
     {
-        int ptVida;
-        int ptAtaque;
-        int Edad;
-        int Tvida;
 
         public Wetar()
         {

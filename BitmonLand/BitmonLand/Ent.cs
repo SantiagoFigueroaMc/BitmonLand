@@ -8,10 +8,6 @@ namespace BitmonLand
 {
     class Ent:Bitmon 
     {
-        int ptVida;
-        int ptAtaque;
-        int Edad;
-        int Tvida;
 
         public Ent()
         {

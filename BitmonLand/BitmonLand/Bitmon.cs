@@ -9,6 +9,12 @@ namespace BitmonLand
 {
     class Bitmon : PictureBox
     {
+        protected int ptVida;
+        protected int ptAtaque;
+        protected int Edad;
+        protected int Tvida;
+        protected int CantidadHijos;
+
         protected string tipo;
         protected string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" };
         protected int mi_posicion;
@@ -19,6 +25,52 @@ namespace BitmonLand
         {
             SizeMode = PictureBoxSizeMode.AutoSize;
         }
+
+        #region getters 
+
+
+        public int getvida()
+        {
+            return ptVida;
+        }
+
+        public int getataque()
+        {
+            return ptAtaque;
+        }
+
+        public int getTvida()
+        {
+            return Tvida;
+        }
+
+        public int getedad()
+        {
+            return Edad;
+        }
+
+        public int getCantHijos()
+        {
+            return CantidadHijos;
+        }
+
+        #endregion
+
+        #region tenerhijos
+
+        private void Rejuveneser() // por tener hijo
+        {
+            int E = Edad;
+            Edad -= (int)(0.3 * E);
+        }
+
+        public void tenerHijo()
+        {
+            Rejuveneser();
+            CantidadHijos++;
+        }
+
+        #endregion
 
         public string Tipo
         {
