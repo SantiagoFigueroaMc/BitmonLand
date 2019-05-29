@@ -138,24 +138,14 @@ namespace BitmonLand
                 foreach (Bitmon bitmon in bitmons_alive)
                 {
                     int antigua_posicion = bitmon.Posicion;
+                    Casilla antigua_casilla = (Casilla)MapLayout.Controls[antigua_posicion];
                     int nueva_posicion = bitmon.Moverse(cols, rows);
                     Casilla nueva_casilla = (Casilla)MapLayout.Controls[nueva_posicion];
                     if (nueva_casilla.ContarOcupantes < 2)
                     {
-                        if (bitmon.Tipo == "Wetar")
-                        {
-                            if (nueva_casilla.Tipo == "agua")
-                            {
-                                nueva_casilla.AddOcupante(bitmon);
-                                bitmon.Posicion = nueva_posicion;
-                            }
-                        }
-                        else
-                        {
-                            nueva_casilla.AddOcupante(bitmon);
-                            bitmon.Posicion = nueva_posicion;
-
-                        }
+                        nueva_casilla.AddOcupante(bitmon);
+                        antigua_casilla.Ocupantes.Remove(bitmon);
+                        bitmon.Posicion = nueva_posicion;
                     }
                     else
                     {
