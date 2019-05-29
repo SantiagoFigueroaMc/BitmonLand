@@ -374,10 +374,10 @@
             // 
             this.numericUpDown_velocidad.DecimalPlaces = 2;
             this.numericUpDown_velocidad.Increment = new decimal(new int[] {
-            100,
+            5,
             0,
             0,
-            0});
+            65536});
             this.numericUpDown_velocidad.Location = new System.Drawing.Point(185, 33);
             this.numericUpDown_velocidad.Maximum = new decimal(new int[] {
             60,
