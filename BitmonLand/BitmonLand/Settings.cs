@@ -15,13 +15,15 @@ namespace BitmonLand
         public int columnas = 7;
         public int filas = 7;
         public int meses = 12;
-        public int velocidad = 100; // duración de cada tick del reloj en milisegundos
+        public int velocidad = 2000; // duración de cada tick del reloj en milisegundos
         public int bitmons = 10;
         public decimal agua = 0.2m;
         public decimal pasto = 0.2m;
         public decimal nieve = 0.2m;
         public decimal volcan = 0.2m;
         public decimal arena = 0.2m;
+
+        private bool pro_settings = false;
         
         public Settings()
         {
@@ -96,7 +98,7 @@ namespace BitmonLand
             numericUpDown_volcan.Value = 0.2m;
 
             numericUpDown_meses.Value = 12;
-            numericUpDown_velocidad.Value = 100;
+            numericUpDown_velocidad.Value = 2000;
 
             numericUpDown_bitmons.Value = bitmons;
             button_iniciar.Visible = true;
@@ -106,11 +108,13 @@ namespace BitmonLand
         #region Numeric up downs
         private void columnas_nUpDown_ValueChanged(object sender, EventArgs e)
         {
+            columnas_nUpDown.Font = new Font(columnas_nUpDown.Font, FontStyle.Bold);
             button_iniciar.Visible = false;
         }
 
         private void fila_nUpDown_ValueChanged(object sender, EventArgs e)
         {
+            fila_nUpDown.Font = new Font(fila_nUpDown.Font, FontStyle.Bold);
             button_iniciar.Visible = false;
         }
 
@@ -159,5 +163,59 @@ namespace BitmonLand
             button_iniciar.Visible = false;
         }
         #endregion
+
+        private void button_pro_options_Click(object sender, EventArgs e)
+        {
+            if (pro_settings == false)
+            {
+                button_pro_options.Text = "Ver menos opciones";
+                pro_settings = true;
+
+                numericUpDown_agua.Visible = true;
+                numericUpDown_arena.Visible = true;
+                numericUpDown_nieve.Visible = true;
+                numericUpDown_pasto.Visible = true;
+                numericUpDown_velocidad.Visible = true;
+                numericUpDown_volcan.Visible = true;
+
+                label_agua.Visible = true;
+                label_arena.Visible = true;
+                label_nieve.Visible = true;
+                label_pasto.Visible = true;
+                label_velocidad.Visible = true;
+                label_volcan.Visible = true;
+
+                progressBar_agua.Visible = true;
+                progressBar_arena.Visible = true;
+                progressBar_nieve.Visible = true;
+                progressBar_pasto.Visible = true;
+                progressBar_volcan.Visible = true;
+            }
+            else
+            {
+                button_pro_options.Text = "Ver más opciones";
+                pro_settings = false;
+
+                numericUpDown_agua.Visible = false;
+                numericUpDown_arena.Visible = false;
+                numericUpDown_nieve.Visible = false;
+                numericUpDown_pasto.Visible = false;
+                numericUpDown_velocidad.Visible = false;
+                numericUpDown_volcan.Visible = false;
+
+                label_agua.Visible = false;
+                label_arena.Visible = false;
+                label_nieve.Visible = false;
+                label_pasto.Visible = false;
+                label_velocidad.Visible = false;
+                label_volcan.Visible = false;
+
+                progressBar_agua.Visible = false;
+                progressBar_arena.Visible = false;
+                progressBar_nieve.Visible = false;
+                progressBar_pasto.Visible = false;
+                progressBar_volcan.Visible = false;
+            }
+        }
     }
 }

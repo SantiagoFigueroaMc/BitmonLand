@@ -37,28 +37,29 @@
             this.fila_nUpDown = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown_agua = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label_agua = new System.Windows.Forms.Label();
             this.numericUpDown_arena = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label_arena = new System.Windows.Forms.Label();
             this.numericUpDown_volcan = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label_volcan = new System.Windows.Forms.Label();
             this.numericUpDown_nieve = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label_nieve = new System.Windows.Forms.Label();
             this.numericUpDown_pasto = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label_pasto = new System.Windows.Forms.Label();
             this.numericUpDown_bitmons = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.numericUpDown_meses = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.numericUpDown_velocidad = new System.Windows.Forms.NumericUpDown();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label_velocidad = new System.Windows.Forms.Label();
             this.button_guardar = new System.Windows.Forms.Button();
             this.progressBar_pasto = new System.Windows.Forms.ProgressBar();
             this.progressBar_nieve = new System.Windows.Forms.ProgressBar();
             this.progressBar_volcan = new System.Windows.Forms.ProgressBar();
             this.progressBar_arena = new System.Windows.Forms.ProgressBar();
             this.progressBar_agua = new System.Windows.Forms.ProgressBar();
+            this.button_pro_options = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.columnas_nUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fila_nUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_agua)).BeginInit();
@@ -74,9 +75,9 @@
             // button_iniciar
             // 
             this.button_iniciar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button_iniciar.Location = new System.Drawing.Point(274, 134);
+            this.button_iniciar.Location = new System.Drawing.Point(253, 155);
             this.button_iniciar.Name = "button_iniciar";
-            this.button_iniciar.Size = new System.Drawing.Size(75, 23);
+            this.button_iniciar.Size = new System.Drawing.Size(126, 23);
             this.button_iniciar.TabIndex = 0;
             this.button_iniciar.Text = "Iniciar";
             this.button_iniciar.UseVisualStyleBackColor = true;
@@ -85,9 +86,9 @@
             // 
             // button_reset
             // 
-            this.button_reset.Location = new System.Drawing.Point(274, 108);
+            this.button_reset.Location = new System.Drawing.Point(253, 129);
             this.button_reset.Name = "button_reset";
-            this.button_reset.Size = new System.Drawing.Size(75, 23);
+            this.button_reset.Size = new System.Drawing.Size(126, 23);
             this.button_reset.TabIndex = 1;
             this.button_reset.Text = "Resetear";
             this.toolTip1.SetToolTip(this.button_reset, "Establecer configuración de fábrica");
@@ -168,16 +169,18 @@
             this.numericUpDown_agua.Name = "numericUpDown_agua";
             this.numericUpDown_agua.Size = new System.Drawing.Size(49, 20);
             this.numericUpDown_agua.TabIndex = 8;
+            this.numericUpDown_agua.Visible = false;
             this.numericUpDown_agua.ValueChanged += new System.EventHandler(this.numericUpDown_agua_ValueChanged);
             // 
-            // label3
+            // label_agua
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 61);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Agua";
+            this.label_agua.AutoSize = true;
+            this.label_agua.Location = new System.Drawing.Point(12, 61);
+            this.label_agua.Name = "label_agua";
+            this.label_agua.Size = new System.Drawing.Size(32, 13);
+            this.label_agua.TabIndex = 7;
+            this.label_agua.Text = "Agua";
+            this.label_agua.Visible = false;
             // 
             // numericUpDown_arena
             // 
@@ -196,16 +199,18 @@
             this.numericUpDown_arena.Name = "numericUpDown_arena";
             this.numericUpDown_arena.Size = new System.Drawing.Size(49, 20);
             this.numericUpDown_arena.TabIndex = 10;
+            this.numericUpDown_arena.Visible = false;
             this.numericUpDown_arena.ValueChanged += new System.EventHandler(this.numericUpDown_arena_ValueChanged);
             // 
-            // label4
+            // label_arena
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 165);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Arena";
+            this.label_arena.AutoSize = true;
+            this.label_arena.Location = new System.Drawing.Point(12, 165);
+            this.label_arena.Name = "label_arena";
+            this.label_arena.Size = new System.Drawing.Size(35, 13);
+            this.label_arena.TabIndex = 9;
+            this.label_arena.Text = "Arena";
+            this.label_arena.Visible = false;
             // 
             // numericUpDown_volcan
             // 
@@ -224,16 +229,18 @@
             this.numericUpDown_volcan.Name = "numericUpDown_volcan";
             this.numericUpDown_volcan.Size = new System.Drawing.Size(49, 20);
             this.numericUpDown_volcan.TabIndex = 12;
+            this.numericUpDown_volcan.Visible = false;
             this.numericUpDown_volcan.ValueChanged += new System.EventHandler(this.numericUpDown_volcan_ValueChanged);
             // 
-            // label5
+            // label_volcan
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 139);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Volcán";
+            this.label_volcan.AutoSize = true;
+            this.label_volcan.Location = new System.Drawing.Point(12, 139);
+            this.label_volcan.Name = "label_volcan";
+            this.label_volcan.Size = new System.Drawing.Size(40, 13);
+            this.label_volcan.TabIndex = 11;
+            this.label_volcan.Text = "Volcán";
+            this.label_volcan.Visible = false;
             // 
             // numericUpDown_nieve
             // 
@@ -252,16 +259,18 @@
             this.numericUpDown_nieve.Name = "numericUpDown_nieve";
             this.numericUpDown_nieve.Size = new System.Drawing.Size(49, 20);
             this.numericUpDown_nieve.TabIndex = 14;
+            this.numericUpDown_nieve.Visible = false;
             this.numericUpDown_nieve.ValueChanged += new System.EventHandler(this.numericUpDown_nieve_ValueChanged);
             // 
-            // label6
+            // label_nieve
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 113);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Nieve";
+            this.label_nieve.AutoSize = true;
+            this.label_nieve.Location = new System.Drawing.Point(12, 113);
+            this.label_nieve.Name = "label_nieve";
+            this.label_nieve.Size = new System.Drawing.Size(35, 13);
+            this.label_nieve.TabIndex = 13;
+            this.label_nieve.Text = "Nieve";
+            this.label_nieve.Visible = false;
             // 
             // numericUpDown_pasto
             // 
@@ -280,16 +289,18 @@
             this.numericUpDown_pasto.Name = "numericUpDown_pasto";
             this.numericUpDown_pasto.Size = new System.Drawing.Size(49, 20);
             this.numericUpDown_pasto.TabIndex = 16;
+            this.numericUpDown_pasto.Visible = false;
             this.numericUpDown_pasto.ValueChanged += new System.EventHandler(this.numericUpDown_pasto_ValueChanged);
             // 
-            // label7
+            // label_pasto
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 87);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Pasto";
+            this.label_pasto.AutoSize = true;
+            this.label_pasto.Location = new System.Drawing.Point(12, 87);
+            this.label_pasto.Name = "label_pasto";
+            this.label_pasto.Size = new System.Drawing.Size(34, 13);
+            this.label_pasto.TabIndex = 15;
+            this.label_pasto.Text = "Pasto";
+            this.label_pasto.Visible = false;
             // 
             // numericUpDown_bitmons
             // 
@@ -346,23 +357,25 @@
             this.numericUpDown_velocidad.Size = new System.Drawing.Size(49, 20);
             this.numericUpDown_velocidad.TabIndex = 22;
             this.toolTip1.SetToolTip(this.numericUpDown_velocidad, "Duración en milisegundos de cada mes");
+            this.numericUpDown_velocidad.Visible = false;
             this.numericUpDown_velocidad.ValueChanged += new System.EventHandler(this.numericUpDown_velocidad_ValueChanged);
             // 
-            // label10
+            // label_velocidad
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(126, 35);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(54, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "Velocidad";
-            this.toolTip1.SetToolTip(this.label10, "Duración en milisegundos de cada mes");
+            this.label_velocidad.AutoSize = true;
+            this.label_velocidad.Location = new System.Drawing.Point(126, 35);
+            this.label_velocidad.Name = "label_velocidad";
+            this.label_velocidad.Size = new System.Drawing.Size(54, 13);
+            this.label_velocidad.TabIndex = 21;
+            this.label_velocidad.Text = "Velocidad";
+            this.toolTip1.SetToolTip(this.label_velocidad, "Duración en milisegundos de cada mes");
+            this.label_velocidad.Visible = false;
             // 
             // button_guardar
             // 
-            this.button_guardar.Location = new System.Drawing.Point(274, 82);
+            this.button_guardar.Location = new System.Drawing.Point(253, 103);
             this.button_guardar.Name = "button_guardar";
-            this.button_guardar.Size = new System.Drawing.Size(75, 23);
+            this.button_guardar.Size = new System.Drawing.Size(126, 23);
             this.button_guardar.TabIndex = 23;
             this.button_guardar.Text = "Guardar";
             this.toolTip1.SetToolTip(this.button_guardar, "Guarda la configuración actual, revisando que los valores sean válidos");
@@ -375,6 +388,7 @@
             this.progressBar_pasto.Name = "progressBar_pasto";
             this.progressBar_pasto.Size = new System.Drawing.Size(100, 20);
             this.progressBar_pasto.TabIndex = 24;
+            this.progressBar_pasto.Visible = false;
             // 
             // progressBar_nieve
             // 
@@ -382,6 +396,7 @@
             this.progressBar_nieve.Name = "progressBar_nieve";
             this.progressBar_nieve.Size = new System.Drawing.Size(100, 20);
             this.progressBar_nieve.TabIndex = 25;
+            this.progressBar_nieve.Visible = false;
             // 
             // progressBar_volcan
             // 
@@ -389,6 +404,7 @@
             this.progressBar_volcan.Name = "progressBar_volcan";
             this.progressBar_volcan.Size = new System.Drawing.Size(100, 20);
             this.progressBar_volcan.TabIndex = 26;
+            this.progressBar_volcan.Visible = false;
             // 
             // progressBar_arena
             // 
@@ -396,6 +412,7 @@
             this.progressBar_arena.Name = "progressBar_arena";
             this.progressBar_arena.Size = new System.Drawing.Size(100, 20);
             this.progressBar_arena.TabIndex = 27;
+            this.progressBar_arena.Visible = false;
             // 
             // progressBar_agua
             // 
@@ -403,12 +420,24 @@
             this.progressBar_agua.Name = "progressBar_agua";
             this.progressBar_agua.Size = new System.Drawing.Size(100, 20);
             this.progressBar_agua.TabIndex = 28;
+            this.progressBar_agua.Visible = false;
+            // 
+            // button_pro_options
+            // 
+            this.button_pro_options.Location = new System.Drawing.Point(253, 74);
+            this.button_pro_options.Name = "button_pro_options";
+            this.button_pro_options.Size = new System.Drawing.Size(126, 23);
+            this.button_pro_options.TabIndex = 29;
+            this.button_pro_options.Text = "Ver más opciones";
+            this.button_pro_options.UseVisualStyleBackColor = true;
+            this.button_pro_options.Click += new System.EventHandler(this.button_pro_options_Click);
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(391, 191);
+            this.Controls.Add(this.button_pro_options);
             this.Controls.Add(this.progressBar_agua);
             this.Controls.Add(this.progressBar_arena);
             this.Controls.Add(this.progressBar_volcan);
@@ -416,21 +445,21 @@
             this.Controls.Add(this.progressBar_pasto);
             this.Controls.Add(this.button_guardar);
             this.Controls.Add(this.numericUpDown_velocidad);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label_velocidad);
             this.Controls.Add(this.numericUpDown_meses);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.numericUpDown_bitmons);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.numericUpDown_pasto);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label_pasto);
             this.Controls.Add(this.numericUpDown_nieve);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label_nieve);
             this.Controls.Add(this.numericUpDown_volcan);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label_volcan);
             this.Controls.Add(this.numericUpDown_arena);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label_arena);
             this.Controls.Add(this.numericUpDown_agua);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label_agua);
             this.Controls.Add(this.fila_nUpDown);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.columnas_nUpDown);
@@ -466,27 +495,28 @@
         private System.Windows.Forms.NumericUpDown fila_nUpDown;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDown_agua;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label_agua;
         private System.Windows.Forms.NumericUpDown numericUpDown_arena;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_arena;
         private System.Windows.Forms.NumericUpDown numericUpDown_volcan;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label_volcan;
         private System.Windows.Forms.NumericUpDown numericUpDown_nieve;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label_nieve;
         private System.Windows.Forms.NumericUpDown numericUpDown_pasto;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label_pasto;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.NumericUpDown numericUpDown_bitmons;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown numericUpDown_meses;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown numericUpDown_velocidad;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label_velocidad;
         private System.Windows.Forms.Button button_guardar;
         private System.Windows.Forms.ProgressBar progressBar_pasto;
         private System.Windows.Forms.ProgressBar progressBar_nieve;
         private System.Windows.Forms.ProgressBar progressBar_volcan;
         private System.Windows.Forms.ProgressBar progressBar_arena;
         private System.Windows.Forms.ProgressBar progressBar_agua;
+        private System.Windows.Forms.Button button_pro_options;
     }
 }
