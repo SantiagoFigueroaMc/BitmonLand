@@ -12,7 +12,7 @@ namespace BitmonLand
         private List<Bitmon> ocupantes;
         private string tipo;
         private string[] posibles_tipos = { "nieve", "agua", "pasto", "volcan", "arena" };
-
+        int x=0;
         public int xy;
         
 

@@ -209,30 +209,32 @@ namespace BitmonLand
 
         private void Odio(Casilla c,Bitmon bitmon1, Bitmon bitmon2)
         {
-            MessageBox.Show("entre a odio");
             int vida1 = bitmon1.getvida();
             int vida2 = bitmon2.getvida();
             int ataque1 = bitmon1.getataque();
             int ataque2 = bitmon2.getataque();
 
-            while(vida1>0 && vida2 > 0)
+            while(vida1>=1 && vida2>=1)
             {
                 vida1 -= ataque2;
                 vida2 -= ataque1;
-
-                if (vida1 < 1)
-                {
-                    bitmons_alive.Remove(bitmon1);
-                    bithalla.Add(bitmon1);
-                    c.BorrarOcupante(bitmon1);
-                }
-                if (vida2 < 1)
-                {
-                    bitmons_alive.Remove(bitmon2);
-                    bithalla.Add(bitmon2);
-                    c.BorrarOcupante(bitmon2);
-                }
             }
+
+            if (vida1 < 1)
+            {
+                bitmons_alive.Remove(bitmon1);
+                bithalla.Add(bitmon1);
+                c.BorrarOcupante(bitmon1);
+
+
+            }
+            if (vida2 < 1)
+            {
+                bitmons_alive.Remove(bitmon2);
+                bithalla.Add(bitmon2);
+                c.BorrarOcupante(bitmon2);
+            }
+
         }
 
     }
