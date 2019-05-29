@@ -130,9 +130,12 @@ namespace BitmonLand
             if (mes_actual <= meses_restantes)
             {
                 label_mes_actual.Text = $"Mes actual: {mes_actual}";
+                label_bitmons_vivos.Text = $"Bitmons vivos: {bitmons_alive.Count}";
+                label_bitmons_muertos.Text = $"Bitmons muertos: {bithalla.Count}";
+
                 // recorrer bitmons_alive para mover a los wns. 
                 // Si los bitmons no se mueven, puede ser porque se quedan en una casilla nueva, en vez de la de maplayout.
-                foreach(Bitmon bitmon in bitmons_alive)
+                foreach (Bitmon bitmon in bitmons_alive)
                 {
                     int antigua_posicion = bitmon.Posicion;
                     int nueva_posicion = bitmon.Moverse(cols, rows);
@@ -165,10 +168,7 @@ namespace BitmonLand
                 {
                     if (casilla.ContarOcupantes == 2)
                     {
-                        if(casilla.Ocupantes[0].Tipo == casilla.Ocupantes[1].Tipo)
-                        {
-                            Interactuar(casilla,casilla.Ocupantes[0], casilla.Ocupantes[1]);
-                        }
+                        Interactuar(casilla,casilla.Ocupantes[0], casilla.Ocupantes[1]);
                     }
                     foreach(Bitmon bitmon in casilla.Ocupantes)
                     {
@@ -209,6 +209,7 @@ namespace BitmonLand
 
         private void Odio(Casilla c,Bitmon bitmon1, Bitmon bitmon2)
         {
+            MessageBox.Show("entre a odio");
             int vida1 = bitmon1.getvida();
             int vida2 = bitmon2.getvida();
             int ataque1 = bitmon1.getataque();
@@ -221,11 +222,15 @@ namespace BitmonLand
 
                 if (vida1 < 1)
                 {
-                    bitmons_alive.Remove(bitmon1); 
+                    bitmons_alive.Remove(bitmon1);
+                    bithalla.Add(bitmon1);
+                    c.BorrarOcupante(bitmon1);
                 }
                 if (vida2 < 1)
                 {
                     bitmons_alive.Remove(bitmon2);
+                    bithalla.Add(bitmon2);
+                    c.BorrarOcupante(bitmon2);
                 }
             }
         }
