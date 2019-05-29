@@ -78,76 +78,113 @@ namespace BitmonLand
             List<int> caso6 = new List<int>(); //bordes de la derecha.
             List<int> caso7 = new List<int>(); //borde superior.
             List<int> caso8 = new List<int>(); //borde inferior.
+            List<int> caso9 = new List<int>(); //otro caso.
+            caso1.Add(0);
             caso1.Add(1);
             caso1.Add(columnas);
             caso1.Add(columnas + 1);
+            caso2.Add(0);
             caso2.Add(-1);
             caso2.Add(columnas);
             caso2.Add(columnas - 1);
+            caso3.Add(0);
             caso3.Add(1);
             caso3.Add(-columnas);
-            caso3.Add(-(columnas + 1));
+            caso3.Add(-(columnas - 1));
+            caso4.Add(0);
             caso4.Add(-1);
             caso4.Add(-columnas);
-            caso4.Add(-(columnas - 1));
+            caso4.Add(-(columnas + 1));
+            caso5.Add(0);
             caso5.Add(1);
             caso5.Add(columnas);
             caso5.Add(columnas + 1);
             caso5.Add(-columnas);
-            caso5.Add(-(columnas + 1));
+            caso5.Add(-(columnas - 1));
+            caso6.Add(0);
             caso6.Add(-1);
             caso6.Add(columnas);
             caso6.Add(columnas - 1);
             caso6.Add(-columnas);
             caso6.Add(-columnas - 1);
+            caso7.Add(0);
             caso7.Add(1);
             caso7.Add(-1);
             caso7.Add(columnas);
             caso7.Add(columnas + 1);
             caso7.Add(columnas - 1);
+            caso8.Add(0);
             caso8.Add(1);
             caso8.Add(-1);
             caso8.Add(-columnas);
             caso8.Add(-columnas + 1);
             caso8.Add(-columnas - 1);
+            caso9.Add(-(columnas + 1));
+            caso9.Add(-columnas);
+            caso9.Add(-(columnas - 1));
+            caso9.Add(-1);
+            caso9.Add(0);
+            caso9.Add(1);
+            caso9.Add(columnas - 1);
+            caso9.Add(columnas);
+            caso9.Add(columnas + 1);
             int fila = mi_posicion / filas;
             int col = mi_posicion % columnas;
 
             if (mi_posicion == 0)
             {
-                posibleMovimiento = mi_posicion + caso1[rand.Next(caso1.Count)];
+                int movimiento = caso1[rand.Next(caso1.Count)];
+                posibleMovimiento = mi_posicion + movimiento;
+                mi_posicion += movimiento;
             }
-            else if (col == columnas - 1)
+
+            else if (col == columnas - 1 && mi_posicion == columnas - 1)
             {
-                posibleMovimiento = mi_posicion + caso2[rand.Next(caso2.Count)];
+                int movimiento = caso2[rand.Next(caso2.Count)];
+                posibleMovimiento = mi_posicion + movimiento;
+                mi_posicion += movimiento;
             }
             else if (mi_posicion == (columnas * filas) - columnas)
             {
-                posibleMovimiento = mi_posicion + caso3[rand.Next(caso3.Count)];
+                int movimiento = caso3[rand.Next(caso3.Count)];
+                posibleMovimiento = mi_posicion + movimiento;
+                mi_posicion += movimiento;
             }
             else if (mi_posicion == (columnas * filas) - 1)
             {
-                posibleMovimiento = mi_posicion + caso4[rand.Next(caso4.Count)];
+                int movimiento = caso4[rand.Next(caso4.Count)];
+                posibleMovimiento = mi_posicion + movimiento;
+                mi_posicion += movimiento;
             }
             else if (filas > 2 && col == 0 && mi_posicion != 0 && (mi_posicion != (columnas * filas) - columnas))
             {
-                posibleMovimiento = mi_posicion + caso5[rand.Next(caso5.Count)];
+                int movimiento = caso5[rand.Next(caso5.Count)];
+                posibleMovimiento = mi_posicion + movimiento;
+                mi_posicion += movimiento;
             }
-            else if (filas > 2 && (col - 1) == 0 && mi_posicion != columnas - 1 && (mi_posicion != (columnas * filas) - 1))
+            else if (filas > 2 && (mi_posicion + 1)%columnas == 0 && mi_posicion != columnas - 1 && (mi_posicion != (columnas * filas) - 1 && mi_posicion > columnas && mi_posicion + columnas + 1 == filas * columnas))
             {
-                posibleMovimiento = mi_posicion + caso6[rand.Next(caso6.Count)];
+                int movimiento = caso6[rand.Next(caso6.Count)];
+                posibleMovimiento = mi_posicion + movimiento;
+                mi_posicion += movimiento;
             }
             else if (col != 0 && mi_posicion > 0 && mi_posicion < columnas)
             {
-                posibleMovimiento = mi_posicion + caso7[rand.Next(caso7.Count)];
+                int movimiento = caso7[rand.Next(caso7.Count)];
+                posibleMovimiento = mi_posicion + movimiento;
+                mi_posicion += movimiento;
             }
             else if (col != 0 && (mi_posicion + 1) % columnas != 0 && mi_posicion > (filas * columnas) - columnas && mi_posicion < (filas * columnas) - 1)
             {
-                posibleMovimiento = mi_posicion + caso8[rand.Next(caso8.Count)];
+                int movimiento = caso8[rand.Next(caso8.Count)];
+                posibleMovimiento = mi_posicion + movimiento; ;
+                mi_posicion += movimiento;
             }
             else
             {
-                posibleMovimiento = mi_posicion + rand.Next(-4, 5);
+                int movimiento = caso9[rand.Next(caso9.Count)];
+                posibleMovimiento = mi_posicion + movimiento;
+                mi_posicion += movimiento;
             }
             //mi_posicion = rand_fil * columnas + rand_col;
             //Casillas[3].Borrar(this);
