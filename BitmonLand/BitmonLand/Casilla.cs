@@ -51,7 +51,8 @@ namespace BitmonLand
         // ;a necesitaba para avanzar a si que la hizze yo
         public void BorrarOcupante(Bitmon b)
         {
-
+            ocupantes.Remove(b);
+            this.Controls.Remove(b);
         }
 
 
