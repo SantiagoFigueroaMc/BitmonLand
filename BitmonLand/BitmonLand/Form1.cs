@@ -183,6 +183,14 @@ namespace BitmonLand
             {
                 this.Odio(c,bitmon1, bitmon2);
             }
+            else if((bitmon1.Tipo=="Dorvalo" && bitmon2.Tipo=="Taplan")|| (bitmon1.Tipo == "Taplan" && bitmon2.Tipo == "Dorvalo"))
+            {
+                this.Odio(c, bitmon1, bitmon2);
+            }
+            else if ((bitmon1.Tipo == "Dorvalo" && bitmon2.Tipo == "Gofue") || (bitmon1.Tipo == "Dorvalo" && bitmon2.Tipo == "Dorvalo"))
+            {
+                this.Odio(c, bitmon1, bitmon2);
+            }
             else
             {
                 this.Amor(c,bitmon1, bitmon2);
@@ -196,61 +204,64 @@ namespace BitmonLand
             // crear nuevo bitmon siguiendo las reglas
             string tipo;
             double prob1;
-            Bitmon bitmon; 
+            Bitmon bitmon;
             //con que probabilidad tendra la raza del progenitor 1 o 2
-            if (bitmon1.getCantHijos() > bitmon2.getCantHijos())
+            if (bitmon1.Tipo != "Ent" && bitmon2.Tipo != "Ent")
             {
-                prob1 = 0.7;
-            }
-            else if(bitmon1.getCantHijos() < bitmon2.getCantHijos())
-            {
-                prob1 = 0.3;
-            }
-            else
-            {
-                prob1 = 0.5;
-            }
-            // de quien hereda la raza
-            if (random.NextDouble() < prob1)
-            {
-                tipo = bitmon1.Tipo;
-            }
-            else
-            {
-                tipo = bitmon2.Tipo;
-            }
+                if (bitmon1.getCantHijos() > bitmon2.getCantHijos())
+                {
+                    prob1 = 0.7;
+                }
+                else if (bitmon1.getCantHijos() < bitmon2.getCantHijos())
+                {
+                    prob1 = 0.3;
+                }
+                else
+                {
+                    prob1 = 0.5;
+                }
+                // de quien hereda la raza
+                if (random.NextDouble() < prob1)
+                {
+                    tipo = bitmon1.Tipo;
+                }
+                else
+                {
+                    tipo = bitmon2.Tipo;
+                }
 
-            if (tipo == "Gofue")
-            {
-                bitmon = new Gofue();
-            }
-            else if (tipo == "Dorvalo")
-            {
-                bitmon = new Dorvalo();
-            }
-            else if (tipo == "Taplan")
-            {
-                bitmon = new Taplan();
-            }
-            else if (tipo == "Ent")
-            {
-                bitmon = new Ent();
-            }
-            else if (tipo == "Wetar")
-            {
-                bitmon = new Wetar();
-            }
-            else
-            {
-                bitmon = new Doti();
-            }
+                if (tipo == "Gofue")
+                {
+                    bitmon = new Gofue();
+                }
+                else if (tipo == "Dorvalo")
+                {
+                    bitmon = new Dorvalo();
+                }
+                else if (tipo == "Taplan")
+                {
+                    bitmon = new Taplan();
+                }
+                else if (tipo == "Ent")
+                {
+                    bitmon = new Ent();
+                }
+                else if (tipo == "Wetar")
+                {
+                    bitmon = new Wetar();
+                }
+                else
+                {
+                    bitmon = new Doti();
+                }
 
-            if (bitmon1.Tipo == bitmon2.Tipo)//los purasangre son mas fuertes
-            {
-                bitmon.boostataque(5);bitmon.boostvida(18);
-            }
-            // agregar bitmon al mapelse if (tipo == "Gofue")a si es posible
-            bool pocisionado = false;
+                if (bitmon1.Tipo == bitmon2.Tipo)//los purasangre son mas fuertes
+                {
+                    bitmon.boostataque(5); bitmon.boostvida(18);
+                }
+                // agregar bitmon al mapelse if (tipo == "Gofue")a si es posible
+                // todo lo que al nacer aparece en un terreno ocupado (2 bitmons) muere al instante (el fuerte se aprovecha del debil!)
+                bool pocisionado = false;
                 int potencialCasilla = random.Next((cols * rows));
                 int cont = 0;
                 foreach (Casilla casilla in MapLayout.Controls)
@@ -258,18 +269,18 @@ namespace BitmonLand
                     if (cont == potencialCasilla)
                     {
                         pocisionado = casilla.AddOcupante(bitmon);
-                    if (pocisionado)
-                    {
-                        bitmons_alive.Add(bitmon);
-                        bitmon.setpocision(cont);
-                    }
-                    else bithalla.Add(bitmon);
+                        if (pocisionado)
+                        {
+                            bitmons_alive.Add(bitmon);
+                            bitmon.setpocision(cont);
+                        }
+                        else bithalla.Add(bitmon);
                         break;
                     }
 
                     ++cont;
                 }
-            // puede ser con un foreach, un contador y un limite aleatorio
+            }
         }
 
         private void Odio(Casilla c,Bitmon bitmon1, Bitmon bitmon2)
