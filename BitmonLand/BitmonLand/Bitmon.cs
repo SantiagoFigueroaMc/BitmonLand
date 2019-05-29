@@ -28,7 +28,6 @@ namespace BitmonLand
 
         #region getters 
 
-
         public int getvida()
         {
             return ptVida;
@@ -56,7 +55,17 @@ namespace BitmonLand
 
         #endregion
 
-        #region tenerhijos
+        #region funciones para nacimiento
+
+        public void boostataque(int c)
+        {
+            ptAtaque += c;
+        }
+
+        public void boostvida(int c)
+        {
+            ptVida += c;
+        }
 
         private void Rejuveneser() // por tener hijo
         {

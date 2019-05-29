@@ -18,6 +18,8 @@ namespace BitmonLand
         int cols;
         int mes_actual = 0;
         int meses_restantes = 0;
+        Random random = new Random();
+
         public MainForm()
         /* Este form equivale a la clase que se hace cargo de 
             * armar el tablero, ubicar y mover a los bitmons.
@@ -60,7 +62,6 @@ namespace BitmonLand
             meses_restantes = settings.meses; // cantidad de meses a simular
             label_meses_restantes.Text = $"Meses restantes: {meses_restantes}";
 
-            Random random = new Random();
             
             MapLayout.ColumnCount = cols;
             MapLayout.RowCount = rows;
@@ -177,7 +178,7 @@ namespace BitmonLand
                 }
 
                 // Hay que revisar el tipo de interaccion
-
+                // revisada
                 mes_actual++;
             }
         }
@@ -203,7 +204,79 @@ namespace BitmonLand
         private void Amor(Casilla c,Bitmon bitmon1, Bitmon bitmon2)
         {
             // crear nuevo bitmon siguiendo las reglas
-            // agregar bitmon al mapa si es posible
+            string tipo;
+            double prob1;
+            Bitmon bitmon; 
+            //con que probabilidad tendra la raza del progenitor 1 o 2
+            if (bitmon1.getCantHijos() > bitmon2.getCantHijos())
+            {
+                prob1 = 0.7;
+            }
+            else if(bitmon1.getCantHijos() < bitmon2.getCantHijos())
+            {
+                prob1 = 0.3;
+            }
+            else
+            {
+                prob1 = 0.5;
+            }
+            // de quien hereda la raza
+            if (random.NextDouble() < prob1)
+            {
+                tipo = bitmon1.Tipo;
+            }
+            else
+            {
+                tipo = bitmon2.Tipo;
+            }
+
+            if (tipo == "Gofue")
+            {
+                bitmon = new Gofue();
+            }
+            else if (tipo == "Dorvalo")
+            {
+                bitmon = new Dorvalo();
+            }
+            else if (tipo == "Taplan")
+            {
+                bitmon = new Taplan();
+            }
+            else if (tipo == "Ent")
+            {
+                bitmon = new Ent();
+            }
+            else if (tipo == "Wetar")
+            {
+                bitmon = new Wetar();
+            }
+            else
+            {
+                bitmon = new Doti();
+            }
+
+            if (bitmon1.Tipo == bitmon2.Tipo)//los purasangre son mas fuertes
+            {
+                bitmon.boostataque(5);bitmon.boostvida(18);
+            }
+            // agregar bitmon al mapelse if (tipo == "Gofue")a si es posible
+            bool pocisionado = false;
+            for (; ; )
+            {
+                int potencialCasilla = random.Next((cols * rows));
+                int cont = 0;
+                foreach (Casilla casilla in MapLayout.Controls)
+                {
+                    if (cont == potencialCasilla)
+                    {
+                        pocisionado = casilla.AddOcupante(bitmon);
+                      //  MessageBox.Show("naci");
+                        bitmons_alive.Add(bitmon);
+                    }
+                    ++cont;
+                }
+                if (pocisionado) break;
+            }
             // puede ser con un foreach, un contador y un limite aleatorio
         }
 
