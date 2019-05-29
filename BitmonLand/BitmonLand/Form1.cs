@@ -271,6 +271,9 @@ namespace BitmonLand
                         pocisionado = casilla.AddOcupante(bitmon);
                         if (pocisionado)
                         {
+                            bitmon.SizeMode = PictureBoxSizeMode.Zoom;
+                            bitmon.Size = new Size((int)(600 / cols / 3), (int)(600 / cols / 3));
+
                             bitmons_alive.Add(bitmon);
                             bitmon.setpocision(cont);
                         }
