@@ -22,6 +22,23 @@ namespace BitmonLand
             Edad = 0;
         }
 
+        public override string InteractuarTerreno(string tipo_terreno_pisado)
+        {
+            if (tipo_terreno_pisado == "pasto")
+            {
+                return "arena";
+            }
+
+            else if(tipo_terreno_pisado == "nieve")
+            {
+                return "agua";
+            }
+            //else if (tipo_terreno_pisado malo)
+            else
+            {
+                return base.InteractuarTerreno(tipo_terreno_pisado);
+            }
+        }
 
     }
 }
