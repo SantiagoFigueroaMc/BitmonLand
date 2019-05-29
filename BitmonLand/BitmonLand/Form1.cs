@@ -50,7 +50,7 @@ namespace BitmonLand
             // Se define la cantidad de bitmons iniciales
             int bitmons_initial_count = settings.bitmons;
             label_bitmons_vivos.Text = $"Bitmons vivos: {bitmons_initial_count}";
-            label_bitmons_muertos.Text = $"Bitmons muertos: 0";
+            label_bitmons_muertos.Text = $"Bitmons muertos: {bithalla.Count}";
 
             // Tipos de bitmons
             string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" }; // santiago, falta Doti
@@ -167,7 +167,7 @@ namespace BitmonLand
                     {
                         if(casilla.Ocupantes[0].Tipo == casilla.Ocupantes[1].Tipo)
                         {
-                            Amor(casilla.Ocupantes[0], casilla.Ocupantes[1]);
+                            Interactuar(casilla,casilla.Ocupantes[0], casilla.Ocupantes[1]);
                         }
                     }
                     foreach(Bitmon bitmon in casilla.Ocupantes)
@@ -182,32 +182,32 @@ namespace BitmonLand
             }
         }
 
-        private void Interactuar(Bitmon bitmon1, Bitmon bitmon2)
+        private void Interactuar(Casilla c,Bitmon bitmon1, Bitmon bitmon2)
         {
             if ((bitmon1.Tipo=="Gofue" && bitmon2.Tipo=="Taplan")||(bitmon1.Tipo == "Taplan" && bitmon2.Tipo == "Gofue"))
             {
-                this.Odio(bitmon1, bitmon2);
+                this.Odio(c,bitmon1, bitmon2);
             }
             else if((bitmon1.Tipo == "Wetar" && bitmon2.Tipo == "Dorvalo")|| (bitmon1.Tipo == "Wetar" && bitmon2.Tipo == "Dorvalo"))
             {
-                this.Odio(bitmon1, bitmon2);
+                this.Odio(c,bitmon1, bitmon2);
             }
             else
             {
-                this.Amor(bitmon1, bitmon2);
+                this.Amor(c,bitmon1, bitmon2);
             }
 
         
         }
 
-        private void Amor(Bitmon bitmon1, Bitmon bitmon2)
+        private void Amor(Casilla c,Bitmon bitmon1, Bitmon bitmon2)
         {
             // crear nuevo bitmon siguiendo las reglas
             // agregar bitmon al mapa si es posible
             // puede ser con un foreach, un contador y un limite aleatorio
         }
 
-        private void Odio(Bitmon bitmon1, Bitmon bitmon2)
+        private void Odio(Casilla c,Bitmon bitmon1, Bitmon bitmon2)
         {
             int vida1 = bitmon1.getvida();
             int vida2 = bitmon2.getvida();

@@ -48,6 +48,12 @@ namespace BitmonLand
         }
 
         // eliminar ocupante
+        // ;a necesitaba para avanzar a si que la hizze yo
+        public void BorrarOcupante(Bitmon b)
+        {
+
+        }
+
 
         public string Tipo
         {
@@ -71,5 +77,6 @@ namespace BitmonLand
                 return ocupantes.Count();
             }
         }
+
     }
 }
