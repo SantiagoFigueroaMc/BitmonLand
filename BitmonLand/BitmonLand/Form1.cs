@@ -251,8 +251,6 @@ namespace BitmonLand
             }
             // agregar bitmon al mapelse if (tipo == "Gofue")a si es posible
             bool pocisionado = false;
-            for (; ; )
-            {
                 int potencialCasilla = random.Next((cols * rows));
                 int cont = 0;
                 foreach (Casilla casilla in MapLayout.Controls)
@@ -260,13 +258,17 @@ namespace BitmonLand
                     if (cont == potencialCasilla)
                     {
                         pocisionado = casilla.AddOcupante(bitmon);
-                      //  MessageBox.Show("naci");
+                    if (pocisionado)
+                    {
                         bitmons_alive.Add(bitmon);
+                        bitmon.setpocision(cont);
                     }
+                    else bithalla.Add(bitmon);
+                        break;
+                    }
+
                     ++cont;
                 }
-                if (pocisionado) break;
-            }
             // puede ser con un foreach, un contador y un limite aleatorio
         }
 

@@ -15,6 +15,7 @@ namespace BitmonLand
             ptAtaque = r.Next(1, 5);
             Tvida = r.Next(3, 5);
             Edad = 0;
+            this.Image = BitmonLand.Properties.Resources.Ent1;
         }
 
         public override int Moverse(int columnas, int filas)

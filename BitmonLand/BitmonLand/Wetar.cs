@@ -15,6 +15,7 @@ namespace BitmonLand
             ptAtaque = r.Next(20, 25);
             Tvida = r.Next(5, 7);
             Edad = 0;
+            this.Image = BitmonLand.Properties.Resources.Wetar1;
         }
 
     }
