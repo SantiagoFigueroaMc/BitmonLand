@@ -64,6 +64,10 @@ namespace BitmonLand
             
             MapLayout.ColumnCount = cols;
             MapLayout.RowCount = rows;
+            MapLayout.Dock = DockStyle.None;
+            MapLayout.Padding = new Padding(1,1,1,1);
+            MapLayout.Controls.Clear();
+            
             
             // A continuación se arma el tablero
             // Primero se colocan los tipos de terreno
@@ -83,7 +87,9 @@ namespace BitmonLand
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Nieve1;
                     else
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Pasto1;
+                    cas.Margin = new Padding(0,0,0,0);
                     cas.Dock = DockStyle.Fill;
+                    
                     MapLayout.Controls.Add(cas, c, r);
                 }
             }
@@ -109,6 +115,8 @@ namespace BitmonLand
                     Bitmon b = new Bitmon();
                     b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count())); // se define un tipo aleatorio
                     b.Posicion = contador;
+                    b.SizeMode = PictureBoxSizeMode.Zoom;
+                    b.Size = new Size((int)(600 / cols / 3), (int)(600 / cols / 3));
                     c.AddOcupante(b);
                     bitmons_alive.Add(b);
                 }
@@ -131,8 +139,20 @@ namespace BitmonLand
                     Casilla nueva_casilla = (Casilla)MapLayout.Controls[nueva_posicion];
                     if (nueva_casilla.ContarOcupantes < 2)
                     {
-                        nueva_casilla.AddOcupante(bitmon);
-                        bitmon.Posicion = nueva_posicion;
+                        if (bitmon.Tipo == "Wetar")
+                        {
+                            if (nueva_casilla.Tipo == "agua")
+                            {
+                                nueva_casilla.AddOcupante(bitmon);
+                                bitmon.Posicion = nueva_posicion;
+                            }
+                        }
+                        else
+                        {
+                            nueva_casilla.AddOcupante(bitmon);
+                            bitmon.Posicion = nueva_posicion;
+
+                        }
                     }
                     else
                     {

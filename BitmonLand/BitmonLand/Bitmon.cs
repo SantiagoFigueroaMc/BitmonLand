@@ -42,6 +42,7 @@ namespace BitmonLand
                         this.Image = BitmonLand.Properties.Resources.Dorvalo1;
                     else if (tipo == "Ent")
                         this.Image = BitmonLand.Properties.Resources.Ent1;
+                    // el else if de Doti ya está en su propia clase, en el constructor, hay que hacer lo mismo para los otros
                 }
             }
         }

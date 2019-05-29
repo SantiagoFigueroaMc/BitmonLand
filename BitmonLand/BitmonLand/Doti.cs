@@ -19,7 +19,10 @@ namespace BitmonLand
             ptAtaque = r.Next(100, 150);
             Tvida = r.Next(4, 7);
             Edad = 0;
+            Tipo = "Doti";
+            this.Image = BitmonLand.Properties.Resources.BitmonGhost1;
         }
+        
 
     }
 }
