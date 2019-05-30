@@ -13,7 +13,7 @@ namespace BitmonLand
         {
             ptVida = r.Next(50, 70);
             ptAtaque = r.Next(8, 13);
-            Tvida = r.Next(5, 8);
+            Tvida = r.Next(6, 9);
             Edad = 0;
             tipo = "Taplan";
             this.Image = BitmonLand.Properties.Resources.Taplan1;

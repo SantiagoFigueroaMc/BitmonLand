@@ -13,7 +13,7 @@ namespace BitmonLand
         {
             ptVida = r.Next(30, 46);
             ptAtaque = r.Next(8, 13);
-            Tvida = r.Next(3, 7);
+            Tvida = r.Next(4, 8);
             Edad = 0;
             tipo = "Dorvalo";
             this.Image = BitmonLand.Properties.Resources.Dorvalo1;
