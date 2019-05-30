@@ -11,8 +11,9 @@ namespace BitmonLand
     {
         protected int ptVida;
         protected int ptAtaque;
-        protected int Edad;
-        protected int Tvida;
+        protected int Edad=0;//temporal
+        protected int Tvida=5;// es para que los bitmons iniciales pueddan morir de viejos 
+        //(ya que no son de tipo gofue o algo si no tipo bitmon, luego nunca se les definen esos valores y quedan en null)
         protected int CantidadHijos;
 
         protected string tipo;
@@ -85,6 +86,11 @@ namespace BitmonLand
         }
 
         #endregion
+
+        public void envejecer()
+        {
+            Edad++;
+        }
 
         public string Tipo
         {

@@ -159,7 +159,7 @@ namespace BitmonLand
                 {
                     if (casilla.ContarOcupantes == 2)
                     {
-                        Interactuar(casilla,casilla.Ocupantes[0], casilla.Ocupantes[1]);
+                        //Interactuar(casilla,casilla.Ocupantes[0], casilla.Ocupantes[1]);
                     }
                     foreach(Bitmon bitmon in casilla.Ocupantes)
                     {
@@ -169,6 +169,30 @@ namespace BitmonLand
 
                 // Hay que revisar el tipo de interaccion
                 // revisada
+                // hola, voy a agregar todo lo necesario para que los bitmons no tengan juventud eterna
+                foreach (Casilla casilla in MapLayout.Controls)
+                {
+                    for(int i=casilla.Ocupantes.Count-1; i>=0; --i) 
+                    {
+                        try
+                        {
+                            Bitmon bitmon = casilla.Ocupantes[i];
+                            bitmon.envejecer();
+                            if (bitmon.getedad() >= bitmon.getTvida())
+                            {
+                                casilla.BorrarOcupante(bitmon);
+                                bitmons_alive.Remove(bitmon);
+                                bithalla.Add(bitmon);
+                            }
+
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
+
+                }
                 mes_actual++;
             }
         }
@@ -220,6 +244,8 @@ namespace BitmonLand
                 {
                     prob1 = 0.5;
                 }
+                bitmon1.tenerHijo();
+                bitmon2.tenerHijo(); 
                 // de quien hereda la raza
                 if (random.NextDouble() < prob1)
                 {
