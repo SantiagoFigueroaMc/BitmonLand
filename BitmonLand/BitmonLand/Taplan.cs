@@ -15,7 +15,7 @@ namespace BitmonLand
             ptAtaque = r.Next(8, 13);
             Tvida = r.Next(5, 8);
             Edad = 0;
-            this.Image = BitmonLand.Properties.Resources.BitmonGhost1;
+            this.Image = BitmonLand.Properties.Resources.Taplan1;
         }
 
         public override string InteractuarTerreno(string tipo_terreno_pisado)

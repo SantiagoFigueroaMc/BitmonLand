@@ -16,7 +16,7 @@ namespace BitmonLand
             Tvida = r.Next(2, 5);
             Edad = 0;
             Tipo = "Doti";
-            this.Image = BitmonLand.Properties.Resources.BitmonGhost1;
+            this.Image = BitmonLand.Properties.Resources.Doti1;
         }
         
 
