@@ -15,6 +15,7 @@ namespace BitmonLand
             ptAtaque = r.Next(8, 13);
             Tvida = r.Next(5, 8);
             Edad = 0;
+            tipo = "Taplan";
             this.Image = BitmonLand.Properties.Resources.Taplan1;
         }
 

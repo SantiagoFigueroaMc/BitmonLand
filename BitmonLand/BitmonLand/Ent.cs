@@ -13,8 +13,9 @@ namespace BitmonLand
         {
             ptVida = r.Next(2000, 2500);
             ptAtaque = r.Next(1, 5);
-            Tvida = r.Next(3, 5);
+            Tvida = r.Next(7, 12);
             Edad = 0;
+            tipo = "Ent";
             this.Image = BitmonLand.Properties.Resources.Ent1;
         }
 

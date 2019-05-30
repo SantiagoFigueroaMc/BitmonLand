@@ -197,6 +197,11 @@ namespace BitmonLand
                     }
                 }
 
+                if ((mes_actual % 3) == 0)
+                {
+                    PlantarUnArbol();
+                }
+
                 // Hay que revisar el tipo de interaccion
                 // revisada
                 // hola, voy a agregar todo lo necesario para que los bitmons no tengan juventud eterna
@@ -231,6 +236,7 @@ namespace BitmonLand
                 button_ver_estadisticas.Visible = true;
             }
         }
+
 
         private void Interactuar(Casilla c,Bitmon bitmon1, Bitmon bitmon2)
         {
@@ -345,6 +351,34 @@ namespace BitmonLand
                     ++cont;
                 }
             }
+        }
+
+        private void PlantarUnArbol()
+        {
+            Bitmon bitmon = new Ent();
+            bool pocisionado = false;
+            int potencialCasilla = random.Next((cols * rows));
+            int cont = 0;
+            foreach (Casilla casilla in MapLayout.Controls)
+            {
+                if (cont == potencialCasilla)
+                {
+                    pocisionado = casilla.AddOcupante(bitmon);
+                    if (pocisionado)
+                    {
+                        bitmon.SizeMode = PictureBoxSizeMode.Zoom;
+                        bitmon.Size = new Size((int)(600 / cols / 3), (int)(600 / cols / 3));
+
+                        bitmons_alive.Add(bitmon);
+                        bitmon.setpocision(cont);
+                    }
+                    else bithalla.Add(bitmon);
+                    break;
+                }
+
+                ++cont;
+            }
+
         }
 
         private void Odio(Casilla c,Bitmon bitmon1, Bitmon bitmon2)

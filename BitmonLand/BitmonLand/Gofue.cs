@@ -15,6 +15,7 @@ namespace BitmonLand
             ptAtaque = r.Next(10, 21);
             Tvida = r.Next(4, 7);
             Edad = 0;
+            tipo = "Gofue";
             this.Image = BitmonLand.Properties.Resources.Gofue1;
         }
 
