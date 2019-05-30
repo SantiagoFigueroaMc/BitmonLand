@@ -219,6 +219,7 @@
             this.button_ver_estadisticas.Text = "Ver estadisticas";
             this.button_ver_estadisticas.UseVisualStyleBackColor = true;
             this.button_ver_estadisticas.Visible = false;
+            this.button_ver_estadisticas.Click += new System.EventHandler(this.button_ver_estadisticas_Click);
             // 
             // flowLayoutPanel2
             // 

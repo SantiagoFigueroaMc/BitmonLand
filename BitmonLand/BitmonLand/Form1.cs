@@ -19,6 +19,7 @@ namespace BitmonLand
         int mes_actual = 0;
         int meses_restantes = 0;
         Random random = new Random();
+        Estadisticas estadisticas = new Estadisticas(); // Guardar en los atributos de estadisticas lo que haga falta
 
         public MainForm()
         /* Este form equivale a la clase que se hace cargo de 
@@ -373,5 +374,9 @@ namespace BitmonLand
 
         }
 
+        private void button_ver_estadisticas_Click(object sender, EventArgs e)
+        {
+            estadisticas.ShowDialog();
+        }
     }
 }
