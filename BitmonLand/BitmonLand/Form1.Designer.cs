@@ -32,7 +32,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.MapLayout = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_ver_estadisticas = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label_mes_actual = new System.Windows.Forms.Label();
             this.label_meses_restantes = new System.Windows.Forms.Label();
@@ -201,23 +201,24 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.button_ver_estadisticas);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(580, 36);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // button1
+            // button_ver_estadisticas
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 34);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_ver_estadisticas.AutoSize = true;
+            this.button_ver_estadisticas.Location = new System.Drawing.Point(0, 0);
+            this.button_ver_estadisticas.Margin = new System.Windows.Forms.Padding(0);
+            this.button_ver_estadisticas.Name = "button_ver_estadisticas";
+            this.button_ver_estadisticas.Size = new System.Drawing.Size(91, 34);
+            this.button_ver_estadisticas.TabIndex = 1;
+            this.button_ver_estadisticas.Text = "Ver estadisticas";
+            this.button_ver_estadisticas.UseVisualStyleBackColor = true;
+            this.button_ver_estadisticas.Visible = false;
             // 
             // flowLayoutPanel2
             // 
@@ -384,6 +385,7 @@
             this.MapLayout.ResumeLayout(false);
             this.MapLayout.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -396,7 +398,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel MapLayout;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_ver_estadisticas;
         private System.Windows.Forms.Timer timer_mes;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label_mes_actual;

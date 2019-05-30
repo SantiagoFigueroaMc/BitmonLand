@@ -61,6 +61,7 @@ namespace BitmonLand
             timer_mes.Interval = (int)(settings.velocidad); // duracion en milisegundos de cada mes
             meses_restantes = settings.meses; // cantidad de meses a simular
             label_meses_restantes.Text = $"Meses restantes: {meses_restantes}";
+            label_mes_actual.Text = "Mes actual: 0";
 
 
             MapLayout.Controls.Clear();
@@ -219,6 +220,11 @@ namespace BitmonLand
 
                 }
                 mes_actual++;
+            }
+            else
+            {
+                timer_mes.Stop();
+                button_ver_estadisticas.Visible = true;
             }
         }
 
