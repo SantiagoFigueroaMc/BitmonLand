@@ -38,7 +38,6 @@
             this.label_meses_restantes = new System.Windows.Forms.Label();
             this.label_bitmons_vivos = new System.Windows.Forms.Label();
             this.label_bitmons_muertos = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer_mes = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,6 +48,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.MapLayout.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -276,15 +276,6 @@
             this.label_bitmons_muertos.TabIndex = 6;
             this.label_bitmons_muertos.Text = "Bitmons muertos:";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::BitmonLand.Properties.Resources.Taplan1;
-            this.pictureBox1.Location = new System.Drawing.Point(589, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 36);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // timer_mes
             // 
             this.timer_mes.Interval = 1000;
@@ -370,6 +361,15 @@
             this.label9.Size = new System.Drawing.Size(13, 13);
             this.label9.TabIndex = 8;
             this.label9.Text = "8";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::BitmonLand.Properties.Resources.Doti1;
+            this.pictureBox1.Location = new System.Drawing.Point(589, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 36);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // MainForm
             // 
