@@ -224,7 +224,7 @@ namespace BitmonLand
                 posibleMovimiento = mi_posicion + movimiento;
                 mi_posicion += movimiento;
             }
-            else if (filas > 2 && (mi_posicion + 1)%columnas == 0 && mi_posicion != columnas - 1 && (mi_posicion != (columnas * filas) - 1 && mi_posicion > columnas && mi_posicion + columnas + 1 == filas * columnas))
+            else if ((mi_posicion + 1 / filas) > 1 && mi_posicion != (filas * columnas) - 1 && mi_posicion%filas != 0 && (mi_posicion +1)%columnas == 0)
             {
                 int movimiento = caso6[rand.Next(caso6.Count)];
                 posibleMovimiento = mi_posicion + movimiento;
