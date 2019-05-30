@@ -165,19 +165,22 @@ namespace BitmonLand
                 // Si los bitmons no se mueven, puede ser porque se quedan en una casilla nueva, en vez de la de maplayout.
                 foreach (Bitmon bitmon in bitmons_alive)
                 {
-                    int antigua_posicion = bitmon.Posicion;
-                    Casilla antigua_casilla = (Casilla)MapLayout.Controls[antigua_posicion];
-                    int nueva_posicion = bitmon.Moverse(cols, rows);
-                    Casilla nueva_casilla = (Casilla)MapLayout.Controls[nueva_posicion];
-                    if (nueva_casilla.ContarOcupantes < 2)
+                    if (bitmon.Tipo != "Ent")
                     {
-                        nueva_casilla.AddOcupante(bitmon);
-                        antigua_casilla.Ocupantes.Remove(bitmon);
-                        bitmon.Posicion = nueva_posicion;
-                    }
-                    else
-                    {
-                        bitmon.Posicion = antigua_posicion;
+                        int antigua_posicion = bitmon.Posicion;
+                        Casilla antigua_casilla = (Casilla)MapLayout.Controls[antigua_posicion];
+                        int nueva_posicion = bitmon.Moverse(cols, rows);
+                        Casilla nueva_casilla = (Casilla)MapLayout.Controls[nueva_posicion];
+                        if (nueva_casilla.ContarOcupantes < 2)
+                        {
+                            nueva_casilla.AddOcupante(bitmon);
+                            antigua_casilla.Ocupantes.Remove(bitmon);
+                            bitmon.Posicion = nueva_posicion;
+                        }
+                        else
+                        {
+                            bitmon.Posicion = antigua_posicion;
+                        }
                     }
                 }
 
@@ -186,7 +189,7 @@ namespace BitmonLand
                 {
                     if (casilla.ContarOcupantes == 2)
                     {
-                        //Interactuar(casilla,casilla.Ocupantes[0], casilla.Ocupantes[1]);
+                        Interactuar(casilla,casilla.Ocupantes[0], casilla.Ocupantes[1]);
                     }
                     foreach(Bitmon bitmon in casilla.Ocupantes)
                     {
