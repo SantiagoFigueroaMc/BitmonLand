@@ -30,6 +30,11 @@ namespace BitmonLand
                 Edad += 1;
                 return tipo_terreno_pisado;
             }
+            else if (tipo_terreno_pisado == "volcan")
+            {
+                Edad += 1;
+                return tipo_terreno_pisado;
+            }
 
             else
             {

@@ -32,7 +32,7 @@ namespace BitmonLand
             }
         }
 
-        public override int Moverse(int columnas, int filas)
+      /* public override int Moverse(int columnas, int filas)
         {
             int[] casoU = {0, 1, 2, columnas, columnas + 1,
                            columnas+ 2, 2*columnas, (2*columnas) + 1,(2*columnas) + 2};
@@ -196,7 +196,7 @@ namespace BitmonLand
             }
             return posibleMovimiento;
             //return base.Moverse(columnas, filas);
-        }
+        }*/
 
     }
 }

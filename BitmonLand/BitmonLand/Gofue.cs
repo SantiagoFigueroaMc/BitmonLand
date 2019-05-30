@@ -27,8 +27,13 @@ namespace BitmonLand
 
             else if(tipo_terreno_pisado == "nieve")
             {
-                Edad -= 1;
+               
                 return "agua";
+            }
+            else if (tipo_terreno_pisado == "agua")
+            {
+                Edad += 1;
+                return tipo_terreno_pisado;
             }
             //else if (tipo_terreno_pisado malo)
             else
