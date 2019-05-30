@@ -62,12 +62,12 @@ namespace BitmonLand
             meses_restantes = settings.meses; // cantidad de meses a simular
             label_meses_restantes.Text = $"Meses restantes: {meses_restantes}";
 
-            
+
+            MapLayout.Controls.Clear();
             MapLayout.ColumnCount = cols;
             MapLayout.RowCount = rows;
             MapLayout.Dock = DockStyle.None;
             MapLayout.Padding = new Padding(1,1,1,1);
-            MapLayout.Controls.Clear();
             
             
             // A continuación se arma el tablero

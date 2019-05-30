@@ -38,8 +38,8 @@
             this.label_meses_restantes = new System.Windows.Forms.Label();
             this.label_bitmons_vivos = new System.Windows.Forms.Label();
             this.label_bitmons_muertos = new System.Windows.Forms.Label();
-            this.timer_mes = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer_mes = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -79,6 +79,7 @@
             // 
             // MapLayout
             // 
+            this.MapLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.MapLayout.ColumnCount = 3;
             this.MapLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.333333F));
             this.MapLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.333333F));
@@ -275,11 +276,6 @@
             this.label_bitmons_muertos.TabIndex = 6;
             this.label_bitmons_muertos.Text = "Bitmons muertos:";
             // 
-            // timer_mes
-            // 
-            this.timer_mes.Interval = 1000;
-            this.timer_mes.Tick += new System.EventHandler(this.timer_mes_Tick);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(589, 3);
@@ -287,6 +283,11 @@
             this.pictureBox1.Size = new System.Drawing.Size(100, 36);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            // 
+            // timer_mes
+            // 
+            this.timer_mes.Interval = 1000;
+            this.timer_mes.Tick += new System.EventHandler(this.timer_mes_Tick);
             // 
             // label1
             // 

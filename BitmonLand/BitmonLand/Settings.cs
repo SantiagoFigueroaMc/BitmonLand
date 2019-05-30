@@ -82,6 +82,7 @@ namespace BitmonLand
             {
                 MessageBox.Show("La cantidad de bitmons no cabe en el mapa");
                 numericUpDown_bitmons.Value = columnas * filas - 1;
+                bitmons = (int)numericUpDown_bitmons.Value;
             }
             numericUpDown_bitmons.Font = new Font(numericUpDown_bitmons.Font, FontStyle.Regular);
 
@@ -122,7 +123,7 @@ namespace BitmonLand
             numericUpDown_velocidad.Value = 0.5m;
             numericUpDown_velocidad.Font = new Font(numericUpDown_velocidad.Font, FontStyle.Regular);
 
-            numericUpDown_bitmons.Value = bitmons;
+            numericUpDown_bitmons.Value = 10;
             numericUpDown_bitmons.Font = new Font(numericUpDown_bitmons.Font, FontStyle.Regular);
             button_iniciar.Visible = true;
         }
