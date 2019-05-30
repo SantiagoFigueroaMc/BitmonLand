@@ -381,5 +381,10 @@ namespace BitmonLand
         {
             estadisticas.ShowDialog();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

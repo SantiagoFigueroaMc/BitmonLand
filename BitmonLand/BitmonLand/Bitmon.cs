@@ -127,6 +127,7 @@ namespace BitmonLand
             return tipo_terreno_pisado;
         }
 
+
         public virtual int Moverse(int columnas, int filas)
         {
             Random rand = new Random();
