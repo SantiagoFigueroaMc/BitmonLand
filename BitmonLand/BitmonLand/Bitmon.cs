@@ -17,7 +17,7 @@ namespace BitmonLand
         protected int CantidadHijos;
 
         protected string tipo;
-        protected string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" };
+        protected string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent", "Doti" };
         protected int mi_posicion;
         protected Random r = new Random();
 

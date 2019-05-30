@@ -55,7 +55,7 @@ namespace BitmonLand
             label_bitmons_muertos.Text = $"Bitmons muertos: {bithalla.Count}";
 
             // Tipos de bitmons
-            string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent" }; // santiago, falta Doti
+            string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent", "Doti" }; // santiago, falta Doti
 
 
             timer_mes.Interval = (int)(settings.velocidad); // duracion en milisegundos de cada mes
@@ -113,8 +113,33 @@ namespace BitmonLand
             {
                 if (posiciones_iniciales.Contains(contador))
                 {
+                    string t = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
                     Bitmon b = new Bitmon();
-                    b.Tipo = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count())); // se define un tipo aleatorio
+                    if (t == "Gofue")
+                    {
+                        b = new Gofue();
+                    }
+                    else if (t == "Wetar")
+                    {
+                        b = new Wetar();
+                    }
+                    else if (t == "Taplan")
+                    {
+                        b = new Taplan();
+                    }
+                    else if (t == "Dorvalo")
+                    {
+                        b = new Dorvalo();
+                    }
+                    else if (t == "Ent")
+                    {
+                        b = new Ent();
+                    }
+                    else if (t == "Doti")
+                    {
+                        b = new Doti();
+                    }
+                    b.Tipo = t; // se define un tipo aleatorio
                     b.Posicion = contador;
                     b.SizeMode = PictureBoxSizeMode.Zoom;
                     b.Size = new Size((int)(600 / cols / 3), (int)(600 / cols / 3));

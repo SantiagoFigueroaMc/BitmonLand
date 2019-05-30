@@ -103,27 +103,45 @@ namespace BitmonLand
         private void button_reset_Click(object sender, EventArgs e)
         {
             columnas_nUpDown.Value = 7;
+            columnas = 7;
             columnas_nUpDown.Font = new Font(columnas_nUpDown.Font, FontStyle.Regular);
             fila_nUpDown.Value = 7;
+            filas = 7;
             fila_nUpDown.Font = new Font(fila_nUpDown.Font, FontStyle.Regular);
 
+
             numericUpDown_agua.Value = 0.2m;
+            agua = 0.2m;
             numericUpDown_agua.Font = new Font(numericUpDown_agua.Font, FontStyle.Regular);
+
             numericUpDown_arena.Value = 0.2m;
+            arena = 0.2m;
             numericUpDown_arena.Font = new Font(numericUpDown_arena.Font, FontStyle.Regular);
+
             numericUpDown_nieve.Value = 0.2m;
+            nieve = 0.2m;
             numericUpDown_nieve.Font = new Font(numericUpDown_nieve.Font, FontStyle.Regular);
+
             numericUpDown_pasto.Value = 0.2m;
+            pasto = 0.2m;
             numericUpDown_pasto.Font = new Font(numericUpDown_pasto.Font, FontStyle.Regular);
+
             numericUpDown_volcan.Value = 0.2m;
+            volcan = 0.2m;
             numericUpDown_volcan.Font = new Font(numericUpDown_volcan.Font, FontStyle.Regular);
 
+
             numericUpDown_meses.Value = 12;
+            meses = 12;
             numericUpDown_meses.Font = new Font(numericUpDown_meses.Font, FontStyle.Regular);
+
             numericUpDown_velocidad.Value = 0.5m;
+            velocidad = 1000 / 0.5m;
             numericUpDown_velocidad.Font = new Font(numericUpDown_velocidad.Font, FontStyle.Regular);
 
+
             numericUpDown_bitmons.Value = 10;
+            bitmons = 10;
             numericUpDown_bitmons.Font = new Font(numericUpDown_bitmons.Font, FontStyle.Regular);
             button_iniciar.Visible = true;
         }
