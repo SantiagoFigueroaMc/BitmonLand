@@ -67,6 +67,26 @@ namespace BitmonLand
                 if (posibles_tipos.Contains(value))
                 {
                     tipo = value;
+                    if (tipo == "agua")
+                    {
+                        BackgroundImage = BitmonLand.Properties.Resources.Agua1;
+                    }
+                    else if (tipo == "volcan")
+                    {
+                        BackgroundImage = BitmonLand.Properties.Resources.Volcan1;
+                    }
+                    else if (tipo == "arena")
+                    {
+                        BackgroundImage = BitmonLand.Properties.Resources.Arena1;
+                    }
+                    else if (tipo == "pasto")
+                    {
+                        BackgroundImage = BitmonLand.Properties.Resources.Pasto1;
+                    }
+                    else if (tipo == "nieve")
+                    {
+                        BackgroundImage = BitmonLand.Properties.Resources.Nieve1;
+                    }
                 }
             }
         }

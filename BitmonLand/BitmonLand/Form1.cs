@@ -77,7 +77,10 @@ namespace BitmonLand
             // Tipos de bitmons
             string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent", "Doti" }; // santiago, falta Doti
 
-
+            if(settings.velocidad == 0)
+            {
+                settings.velocidad = 1000;
+            }
             timer_mes.Interval = (int)(settings.velocidad); // duracion en milisegundos de cada mes
             meses_restantes = settings.meses; // cantidad de meses a simular
             label_meses_restantes.Text = $"Meses restantes: {meses_restantes}";
@@ -100,15 +103,30 @@ namespace BitmonLand
                     Casilla cas = new Casilla();
                     int dice = random.Next(volcan_prob + nieve_prob + agua_prob + pasto_prob + arena_prob);
                     if (dice < volcan_prob)
+                    {
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Volcan1;
+                        cas.Tipo = "volcan";
+                    }
                     else if (dice < volcan_prob + agua_prob)
+                    {
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Agua1;
+                        cas.Tipo = "agua";
+                    }
                     else if (dice < volcan_prob + agua_prob + arena_prob)
+                    {
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Arena1;
+                        cas.Tipo = "arena";
+                    }
                     else if (dice < volcan_prob + arena_prob + agua_prob + nieve_prob)
+                    {
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Nieve1;
+                        cas.Tipo = "nieve";
+                    }
                     else
+                    {
                         cas.BackgroundImage = BitmonLand.Properties.Resources.Pasto1;
+                        cas.Tipo = "pasto";
+                    }
                     cas.Margin = new Padding(0,0,0,0);
                     cas.Dock = DockStyle.Fill;
                     
@@ -142,7 +160,13 @@ namespace BitmonLand
                     }
                     else if (t == "Wetar")
                     {
-                        b = new Wetar();
+                        if (c.Tipo == "agua")
+                            b = new Wetar();
+                        else
+                        {
+                            b = new Gofue();
+                            t = "Gofue";
+                        }
                     }
                     else if (t == "Taplan")
                     {
@@ -154,7 +178,13 @@ namespace BitmonLand
                     }
                     else if (t == "Ent")
                     {
-                        b = new Ent();
+                        if (c.Tipo != "nieve" && c.Tipo != "volcan")
+                            b = new Ent();
+                        else
+                        {
+                            b = new Dorvalo();
+                            t = "Dorvalo";
+                        }
                     }
                     else if (t == "Doti")
                     {
@@ -192,9 +222,25 @@ namespace BitmonLand
                     Casilla nueva_casilla = (Casilla)MapLayout.Controls[nueva_posicion];
                     if (nueva_casilla.ContarOcupantes < 2)
                     {
-                        nueva_casilla.AddOcupante(bitmon);
-                        antigua_casilla.Ocupantes.Remove(bitmon);
-                        bitmon.Posicion = nueva_posicion;
+                        if (bitmon.Tipo == "Wetar")
+                        {
+                            if (nueva_casilla.Tipo == "agua")
+                            {
+                                nueva_casilla.AddOcupante(bitmon);
+                                antigua_casilla.Ocupantes.Remove(bitmon);
+                                bitmon.Posicion = nueva_posicion;
+                            }
+                            else
+                            {
+                                bitmon.Posicion = antigua_posicion;
+                            }
+                        }
+                        else
+                        {
+                            nueva_casilla.AddOcupante(bitmon);
+                            antigua_casilla.Ocupantes.Remove(bitmon);
+                            bitmon.Posicion = nueva_posicion;
+                        }
                     }
                     else
                     {
@@ -233,7 +279,6 @@ namespace BitmonLand
                             bitmon.envejecer();
                             if (bitmon.getedad() >= bitmon.getTvida())
                             {
-                                // calcular tasa mortalidad bruta aquí
                                 casilla.BorrarOcupante(bitmon);
                                 bitmons_alive.Remove(bitmon);
                                 bithalla.Add(bitmon);
@@ -255,6 +300,7 @@ namespace BitmonLand
                 suma_nacido_mes_gofue += gofue_nacidos_mes;
                 suma_nacido_mes_taplan += taplan_nacidos_mes;
                 suma_nacido_mes_wetar += wetar_nacidos_mes;
+                suma_muertos_mes += bitmons_muertos_mes;
 
                 mes_actual++;
 
@@ -446,7 +492,7 @@ namespace BitmonLand
                 };
 
                 // 4
-                estadisticas.TasaBrutaMortalidad = suma_muertos_mes / meses_restantes;
+                estadisticas.TasaBrutaMortalidad = Math.Round(suma_muertos_mes / meses_restantes, 2);
 
                 // 5
                 estadisticas.CantidadHijosPromedioEspecie = new Dictionary<string, decimal>()
@@ -602,30 +648,31 @@ namespace BitmonLand
         private void PlantarUnArbol()
         {
             Bitmon bitmon = new Ent();
-            bool pocisionado = false;
-            int potencialCasilla = random.Next((cols * rows));
+            Casilla casilla;
+            List<int> posibles_casillas = new List<int>();
             int cont = 0;
-            foreach (Casilla casilla in MapLayout.Controls)
+            foreach(Casilla c in MapLayout.Controls)
             {
-                if (cont == potencialCasilla)
+                if (c.Tipo != "volcan" && c.Tipo != "nieve" && c.ContarOcupantes < 2)
                 {
-                    pocisionado = casilla.AddOcupante(bitmon);
-                    if (pocisionado)
-                    {
-                        bitmon.SizeMode = PictureBoxSizeMode.Zoom;
-                        bitmon.Size = new Size((int)(600 / cols / 3), (int)(600 / cols / 3));
-
-                        bitmons_alive.Add(bitmon);
-                        bitmon.setpocision(cont);
-                        ent_nacidos_mes++;
-                    }
-                    else bithalla.Add(bitmon);
-                    break;
+                    posibles_casillas.Add(cont);
                 }
-
-                ++cont;
+                cont++;
             }
+            if (posibles_casillas.Count > 0)
+            {
+                int casilla_elegida = posibles_casillas.ElementAt(random.Next(posibles_casillas.Count));
+                casilla = (Casilla)MapLayout.Controls[casilla_elegida];
+                if (casilla.AddOcupante(bitmon))
+                {
+                    bitmon.SizeMode = PictureBoxSizeMode.Zoom;
+                    bitmon.Size = new Size((int)(600 / cols / 3), (int)(600 / cols / 3));
 
+                    bitmons_alive.Add(bitmon);
+                    bitmon.setpocision(casilla_elegida);
+                    ent_nacidos_mes++;
+                }
+            }
         }
 
         private void Odio(Casilla c,Bitmon bitmon1, Bitmon bitmon2)

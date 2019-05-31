@@ -39,7 +39,7 @@ namespace BitmonLand
 
             else
             {
-                return base.InteractuarTerreno(tipo_terreno_pisado);
+                return tipo_terreno_pisado;
             }
         }
 

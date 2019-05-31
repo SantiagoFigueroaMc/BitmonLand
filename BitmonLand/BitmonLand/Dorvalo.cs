@@ -29,7 +29,7 @@ namespace BitmonLand
             //else if (tipo_terreno_pisado malo)
             else
             {
-                return base.InteractuarTerreno(tipo_terreno_pisado);
+                return tipo_terreno_pisado;
             }
         }
 
