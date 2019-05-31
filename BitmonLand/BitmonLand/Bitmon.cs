@@ -11,9 +11,12 @@ namespace BitmonLand
     {
         protected int ptVida;
         protected int ptAtaque;
-        protected int Edad=0;//temporal
-        protected int Tvida=5;// es para que los bitmons iniciales pueddan morir de viejos 
+        protected int Edad=0;//representa el tiempo vivido
+        protected int Trestante = 0;//cuando sea igual a Tvida morira de viejo
+        //es solo para simplificar las estadisticas
+        protected int Tvida=5;// es para que los bitmons iniciales puedan morir de viejos 
         //(ya que no son de tipo gofue o algo si no tipo bitmon, luego nunca se les definen esos valores y quedan en null)
+        //solucionado.
         protected int CantidadHijos;
 
         protected string tipo;
@@ -32,6 +35,11 @@ namespace BitmonLand
         public void setpocision(int c)
         {
             mi_posicion = c;
+        }
+
+        public int gettrestante()
+        {
+            return Trestante;
         }
 
         public int getvida()
@@ -73,10 +81,10 @@ namespace BitmonLand
             ptVida += c;
         }
 
-        private void Rejuveneser() // por tener hijo
+        private void Rejuveneser() // por tener hijo recuperan un 30% del tiempo de vida gastado
         {
-            int E = Edad;
-            Edad -= (int)(0.3 * E);
+            int E = Trestante;
+            Trestante -= (int)(0.3 * E);
         }
 
         public void tenerHijo()
@@ -89,6 +97,7 @@ namespace BitmonLand
 
         public void envejecer()
         {
+            Trestante++;
             Edad++;
         }
 

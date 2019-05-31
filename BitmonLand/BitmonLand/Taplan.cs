@@ -29,11 +29,13 @@ namespace BitmonLand
             else if (tipo_terreno_pisado == "nieve")
             {
                 Edad += 1;
+                Trestante += 1;
                 return tipo_terreno_pisado;
             }
             else if (tipo_terreno_pisado == "volcan")
             {
                 Edad += 1;
+                Trestante += 1;
                 return tipo_terreno_pisado;
             }
 

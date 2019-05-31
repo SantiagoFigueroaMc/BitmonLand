@@ -75,7 +75,7 @@ namespace BitmonLand
             label_bitmons_muertos.Text = $"Bitmons muertos: {bithalla.Count}";
 
             // Tipos de bitmons
-            string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent", "Doti" }; // santiago, falta Doti
+            string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent", "Doti" }; 
 
             if(settings.velocidad == 0)
             {
@@ -190,7 +190,7 @@ namespace BitmonLand
                     {
                         b = new Doti();
                     }
-                    b.Tipo = t; // se define un tipo aleatorio
+                    b.Tipo = t; 
                     b.Posicion = contador;
                     b.SizeMode = PictureBoxSizeMode.Zoom;
                     b.Size = new Size((int)(600 / cols / 3), (int)(600 / cols / 3));
@@ -277,7 +277,7 @@ namespace BitmonLand
                         {
                             Bitmon bitmon = casilla.Ocupantes[i];
                             bitmon.envejecer();
-                            if (bitmon.getedad() >= bitmon.getTvida())
+                            if (bitmon.gettrestante() >= bitmon.getTvida())
                             {
                                 casilla.BorrarOcupante(bitmon);
                                 bitmons_alive.Remove(bitmon);
@@ -456,6 +456,11 @@ namespace BitmonLand
                 {
                     edad_promedio_wetar = edad_promedio_wetar / wetar_count;
                     hijos_promedio_wetar = hijos_promedio_wetar / wetar_count;
+                }
+                if (dorvalo_count > 0)
+                {
+                    edad_promedio_dorvalo = edad_promedio_dorvalo / dorvalo_count;
+                    hijos_promedio_dorvalo = hijos_promedio_dorvalo / dorvalo_count;
                 }
 
                 // 1
@@ -697,6 +702,17 @@ namespace BitmonLand
             {
                 ataque2 = (int)((double)ataque1 * 1.5); //los gofue tienen ventaja sobre los taplans
             }
+
+            if (bitmon1.Tipo == "Dorvalo" && bitmon2.Tipo == "Gofue")
+            {
+                ataque2 = (int)((double)ataque2 * 0.8);//los dorvalos son resistentes a los gofue
+            }
+
+            if (bitmon1.Tipo == "Gofue" && bitmon2.Tipo == "Dorvalo")
+            {
+                ataque1 = (int)((double)ataque1 * 0.8);//los dorvalos son resistentes a los gofue
+            }
+
 
             while (vida1>=1 && vida2>=1)
             {

@@ -33,6 +33,7 @@ namespace BitmonLand
             else if (tipo_terreno_pisado == "agua")
             {
                 Edad += 1;
+                Trestante += 1;
                 return tipo_terreno_pisado;
             }
             //else if (tipo_terreno_pisado malo)
