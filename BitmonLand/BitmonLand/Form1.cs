@@ -16,10 +16,28 @@ namespace BitmonLand
         List<Bitmon> bithalla = new List<Bitmon>();
         int rows;
         int cols;
-        int mes_actual = 0;
+        int mes_actual = 1;
         int meses_restantes = 0;
         Random random = new Random();
         Estadisticas estadisticas = new Estadisticas(); // Guardar en los atributos de estadisticas lo que haga falta
+
+
+        int gofue_nacidos_mes = 0;
+        int taplan_nacidos_mes = 0;
+        int doti_nacidos_mes = 0;
+        int wetar_nacidos_mes = 0;
+        int dorvalo_nacidos_mes = 0;
+        int ent_nacidos_mes = 0;
+        int bitmons_muertos_mes = 0;
+
+        decimal suma_nacido_mes_gofue = 0;
+        decimal suma_nacido_mes_taplan = 0;
+        decimal suma_nacido_mes_doti = 0;
+        decimal suma_nacido_mes_wetar = 0;
+        decimal suma_nacido_mes_dorvalo = 0;
+        decimal suma_nacido_mes_ent = 0;
+        decimal suma_muertos_mes = 0;
+
 
         public MainForm()
         /* Este form equivale a la clase que se hace cargo de 
@@ -28,6 +46,7 @@ namespace BitmonLand
         {
             InitializeComponent();
 
+            #region Setup
             Settings settings = new Settings();
             if (settings.ShowDialog() == DialogResult.OK)
             {
@@ -62,7 +81,7 @@ namespace BitmonLand
             timer_mes.Interval = (int)(settings.velocidad); // duracion en milisegundos de cada mes
             meses_restantes = settings.meses; // cantidad de meses a simular
             label_meses_restantes.Text = $"Meses restantes: {meses_restantes}";
-            label_mes_actual.Text = "Mes actual: 0";
+            label_mes_actual.Text = "Mes actual: -";
 
 
             MapLayout.Controls.Clear();
@@ -150,6 +169,8 @@ namespace BitmonLand
                 }
                 contador++;
             }
+            #endregion
+
             timer_mes.Start();
         }
 
@@ -165,22 +186,19 @@ namespace BitmonLand
                 // Si los bitmons no se mueven, puede ser porque se quedan en una casilla nueva, en vez de la de maplayout.
                 foreach (Bitmon bitmon in bitmons_alive)
                 {
-                    if (bitmon.Tipo != "Ent")
+                    int antigua_posicion = bitmon.Posicion;
+                    Casilla antigua_casilla = (Casilla)MapLayout.Controls[antigua_posicion];
+                    int nueva_posicion = bitmon.Moverse(cols, rows);
+                    Casilla nueva_casilla = (Casilla)MapLayout.Controls[nueva_posicion];
+                    if (nueva_casilla.ContarOcupantes < 2)
                     {
-                        int antigua_posicion = bitmon.Posicion;
-                        Casilla antigua_casilla = (Casilla)MapLayout.Controls[antigua_posicion];
-                        int nueva_posicion = bitmon.Moverse(cols, rows);
-                        Casilla nueva_casilla = (Casilla)MapLayout.Controls[nueva_posicion];
-                        if (nueva_casilla.ContarOcupantes < 2)
-                        {
-                            nueva_casilla.AddOcupante(bitmon);
-                            antigua_casilla.Ocupantes.Remove(bitmon);
-                            bitmon.Posicion = nueva_posicion;
-                        }
-                        else
-                        {
-                            bitmon.Posicion = antigua_posicion;
-                        }
+                        nueva_casilla.AddOcupante(bitmon);
+                        antigua_casilla.Ocupantes.Remove(bitmon);
+                        bitmon.Posicion = nueva_posicion;
+                    }
+                    else
+                    {
+                        bitmon.Posicion = antigua_posicion;
                     }
                 }
 
@@ -215,9 +233,11 @@ namespace BitmonLand
                             bitmon.envejecer();
                             if (bitmon.getedad() >= bitmon.getTvida())
                             {
+                                // calcular tasa mortalidad bruta aquí
                                 casilla.BorrarOcupante(bitmon);
                                 bitmons_alive.Remove(bitmon);
                                 bithalla.Add(bitmon);
+                                bitmons_muertos_mes++;
                             }
 
                         }
@@ -228,11 +248,227 @@ namespace BitmonLand
                     }
 
                 }
+
+                suma_nacido_mes_dorvalo += dorvalo_nacidos_mes;
+                suma_nacido_mes_doti += doti_nacidos_mes;
+                suma_nacido_mes_ent += ent_nacidos_mes;
+                suma_nacido_mes_gofue += gofue_nacidos_mes;
+                suma_nacido_mes_taplan += taplan_nacidos_mes;
+                suma_nacido_mes_wetar += wetar_nacidos_mes;
+
                 mes_actual++;
+
+                gofue_nacidos_mes = 0;
+                taplan_nacidos_mes = 0;
+                wetar_nacidos_mes = 0;
+                ent_nacidos_mes = 0;
+                dorvalo_nacidos_mes = 0;
+                doti_nacidos_mes = 0;
+                bitmons_muertos_mes = 0;
             }
             else
             {
                 timer_mes.Stop();
+
+                // calcular edad promedio de todos
+                int doti_count = 0;
+                decimal edad_promedio_doti = 0;
+                decimal hijos_promedio_doti = 0;
+
+                int ent_count = 0;
+                decimal edad_promedio_ent = 0;
+                decimal hijos_promedio_ent = 0;
+
+                int dorvalo_count = 0;
+                decimal edad_promedio_dorvalo = 0;
+                decimal hijos_promedio_dorvalo = 0;
+
+                int taplan_count = 0;
+                decimal edad_promedio_taplan = 0;
+                decimal hijos_promedio_taplan = 0;
+
+                int gofue_count = 0;
+                decimal edad_promedio_gofue = 0;
+                decimal hijos_promedio_gofue = 0;
+
+                int wetar_count = 0;
+                decimal edad_promedio_wetar = 0;
+                decimal hijos_promedio_wetar = 0;
+
+                foreach (Bitmon bitmon in bithalla)
+                {
+                    if(bitmon.Tipo == "Doti")
+                    {
+                        doti_count++;
+                        edad_promedio_doti += bitmon.getedad();
+                        hijos_promedio_doti += bitmon.getCantHijos();
+                    }
+                    else if (bitmon.Tipo == "Ent")
+                    {
+                        ent_count++;
+                        edad_promedio_ent += bitmon.getedad();
+                        hijos_promedio_ent += bitmon.getCantHijos();
+                    }
+                    else if (bitmon.Tipo == "Dorvalo")
+                    {
+                        dorvalo_count++;
+                        edad_promedio_dorvalo += bitmon.getedad();
+                        hijos_promedio_dorvalo += bitmon.getCantHijos();
+                    }
+                    else if (bitmon.Tipo == "Taplan")
+                    {
+                        taplan_count++;
+                        edad_promedio_taplan += bitmon.getedad();
+                        hijos_promedio_taplan += bitmon.getCantHijos();
+                    }
+                    else if (bitmon.Tipo == "Gofue")
+                    {
+                        gofue_count++;
+                        edad_promedio_gofue += bitmon.getedad();
+                        hijos_promedio_gofue += bitmon.getCantHijos();
+                    }
+                    else if (bitmon.Tipo == "Wetar")
+                    {
+                        wetar_count++;
+                        edad_promedio_wetar += bitmon.getedad();
+                        hijos_promedio_wetar += bitmon.getCantHijos();
+                    }
+                }
+
+                // 7
+                estadisticas.BithalaCantidadBitmonsEspecie = new Dictionary<string, int>()
+                {
+                    { "Gofue", gofue_count},
+                    { "Taplan", taplan_count},
+                    { "Doti", doti_count},
+                    { "Ent", ent_count},
+                    { "Dorvalo", dorvalo_count},
+                    { "Wetar", wetar_count}
+                };
+
+                foreach (Bitmon bitmon in bitmons_alive)
+                {
+                    if (bitmon.Tipo == "Doti")
+                    {
+                        doti_count++;
+                        edad_promedio_doti += bitmon.getedad();
+                        hijos_promedio_doti += bitmon.getCantHijos();
+                    }
+                    else if (bitmon.Tipo == "Ent")
+                    {
+                        ent_count++;
+                        edad_promedio_ent += bitmon.getedad();
+                        hijos_promedio_ent += bitmon.getCantHijos();
+                    }
+                    else if (bitmon.Tipo == "Dorvalo")
+                    {
+                        dorvalo_count++;
+                        edad_promedio_dorvalo += bitmon.getedad();
+                        hijos_promedio_dorvalo += bitmon.getCantHijos();
+                    }
+                    else if (bitmon.Tipo == "Taplan")
+                    {
+                        taplan_count++;
+                        edad_promedio_taplan += bitmon.getedad();
+                        hijos_promedio_taplan += bitmon.getCantHijos();
+                    }
+                    else if (bitmon.Tipo == "Gofue")
+                    {
+                        gofue_count++;
+                        edad_promedio_gofue += bitmon.getedad();
+                        hijos_promedio_gofue += bitmon.getCantHijos();
+                    }
+                    else if (bitmon.Tipo == "Wetar")
+                    {
+                        wetar_count++;
+                        edad_promedio_wetar += bitmon.getedad();
+                        hijos_promedio_wetar += bitmon.getCantHijos();
+                    }
+                }
+
+                if (doti_count > 0)
+                {
+                    edad_promedio_doti = edad_promedio_doti / doti_count;
+                    hijos_promedio_doti = hijos_promedio_doti / doti_count;
+                }
+                if (ent_count > 0)
+                {
+                    edad_promedio_ent = edad_promedio_ent / ent_count;
+                    hijos_promedio_ent = hijos_promedio_ent / ent_count;
+                }
+                if (gofue_count > 0)
+                {
+                    edad_promedio_gofue = edad_promedio_gofue / gofue_count;
+                    hijos_promedio_gofue = hijos_promedio_gofue / gofue_count;
+                }
+                if (taplan_count > 0)
+                {
+                    edad_promedio_taplan = edad_promedio_taplan / taplan_count;
+                    hijos_promedio_taplan = hijos_promedio_taplan / taplan_count;
+                }
+                if (wetar_count > 0)
+                {
+                    edad_promedio_wetar = edad_promedio_wetar / wetar_count;
+                    hijos_promedio_wetar = hijos_promedio_wetar / wetar_count;
+                }
+
+                // 1
+                estadisticas.TiempoVidaPromedio = Math.Round(
+                    (edad_promedio_dorvalo*dorvalo_count + 
+                    edad_promedio_doti*doti_count + 
+                    edad_promedio_ent*ent_count + 
+                    edad_promedio_gofue*gofue_count + 
+                    edad_promedio_taplan*taplan_count + 
+                    edad_promedio_wetar*wetar_count) /
+                    (dorvalo_count + doti_count + ent_count + gofue_count + taplan_count + wetar_count), 2);
+
+                int decimales_estadistica = 4;
+                // 2
+                estadisticas.TiempoVidaPromedioEspecie = new Dictionary<string, decimal>()
+                {
+                    { "Gofue", Math.Round(edad_promedio_gofue,decimales_estadistica) },
+                    { "Taplan", Math.Round(edad_promedio_taplan,decimales_estadistica) },
+                    { "Doti", Math.Round(edad_promedio_doti,decimales_estadistica) },
+                    { "Ent", Math.Round(edad_promedio_ent,decimales_estadistica) },
+                    { "Dorvalo", Math.Round(edad_promedio_dorvalo,decimales_estadistica) },
+                    { "Wetar", Math.Round(edad_promedio_wetar,decimales_estadistica) }
+                };
+
+                // 3
+                estadisticas.TasaBrutaNatalidadEspecie = new Dictionary<string, decimal>()
+                {
+                    { "Gofue", Math.Round( suma_nacido_mes_gofue/meses_restantes, decimales_estadistica) },
+                    { "Taplan", Math.Round( suma_nacido_mes_taplan/meses_restantes, decimales_estadistica) },
+                    { "Doti", Math.Round( suma_nacido_mes_doti/meses_restantes, decimales_estadistica) },
+                    { "Ent", Math.Round( suma_nacido_mes_ent/meses_restantes, decimales_estadistica) },
+                    { "Dorvalo", Math.Round( suma_nacido_mes_dorvalo/meses_restantes, decimales_estadistica) },
+                    { "Wetar", Math.Round( suma_nacido_mes_wetar/meses_restantes, decimales_estadistica) }
+                };
+
+                // 4
+                estadisticas.TasaBrutaMortalidad = suma_muertos_mes / meses_restantes;
+
+                // 5
+                estadisticas.CantidadHijosPromedioEspecie = new Dictionary<string, decimal>()
+                {
+                    { "Gofue", Math.Round(hijos_promedio_gofue,decimales_estadistica) },
+                    { "Taplan", Math.Round(hijos_promedio_taplan,decimales_estadistica) },
+                    { "Doti", Math.Round(hijos_promedio_doti,decimales_estadistica) },
+                    { "Ent", Math.Round(hijos_promedio_ent,decimales_estadistica) },
+                    { "Dorvalo", Math.Round(hijos_promedio_dorvalo,decimales_estadistica) },
+                    { "Wetar", Math.Round(hijos_promedio_wetar,decimales_estadistica) }
+                };
+
+                // 6
+                List<string> especies_extintas = new List<string>() { "Gofue", "Taplan", "Doti", "Ent", "Dorvalo", "Wetar" };
+                foreach(Bitmon b in bitmons_alive)
+                {
+                    if (especies_extintas.Contains(b.Tipo))
+                        especies_extintas.Remove(b.Tipo);
+                }
+                estadisticas.EspeciesExtintas = especies_extintas;
+                
+
                 button_ver_estadisticas.Visible = true;
             }
         }
@@ -343,6 +579,16 @@ namespace BitmonLand
 
                             bitmons_alive.Add(bitmon);
                             bitmon.setpocision(cont);
+                            if (bitmon.Tipo == "Gofue")
+                                gofue_nacidos_mes++;
+                            if (bitmon.Tipo == "Taplan")
+                                taplan_nacidos_mes++;
+                            if (bitmon.Tipo == "Dorvalo")
+                                dorvalo_nacidos_mes++;
+                            if (bitmon.Tipo == "Wetar")
+                                wetar_nacidos_mes++;
+                            if (bitmon.Tipo == "Dorvalo")
+                                dorvalo_nacidos_mes++;
                         }
                         else bithalla.Add(bitmon);
                         break;
@@ -371,6 +617,7 @@ namespace BitmonLand
 
                         bitmons_alive.Add(bitmon);
                         bitmon.setpocision(cont);
+                        ent_nacidos_mes++;
                     }
                     else bithalla.Add(bitmon);
                     break;
@@ -399,7 +646,7 @@ namespace BitmonLand
                 bitmons_alive.Remove(bitmon1);
                 bithalla.Add(bitmon1);
                 c.BorrarOcupante(bitmon1);
-
+                bitmons_muertos_mes++;
 
             }
             if (vida2 < 1)
@@ -407,12 +654,14 @@ namespace BitmonLand
                 bitmons_alive.Remove(bitmon2);
                 bithalla.Add(bitmon2);
                 c.BorrarOcupante(bitmon2);
+                bitmons_muertos_mes++;
             }
 
         }
 
         private void button_ver_estadisticas_Click(object sender, EventArgs e)
         {
+            estadisticas.LoadData();
             estadisticas.ShowDialog();
         }
 

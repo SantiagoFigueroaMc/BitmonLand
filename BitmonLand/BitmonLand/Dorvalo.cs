@@ -41,7 +41,7 @@ namespace BitmonLand
 
             List<int> opciones = new List<int>();
 
-            // Este es un movimiento para las 20 casillas inmediatas
+            // Este es un movimiento para las 24 casillas inmediatas
             if (f > 0 && c > 0)
             {
                 opciones.Add((f - 1) * columnas + (c - 1)) ; // izquierda arriba
