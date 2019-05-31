@@ -19,7 +19,7 @@ namespace BitmonLand
         protected string tipo;
         protected string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent", "Doti" };
         protected int mi_posicion;
-        protected Random r = new Random();
+        protected Random random = new Random();
 
 
         public Bitmon()
@@ -130,127 +130,32 @@ namespace BitmonLand
 
         public virtual int Moverse(int columnas, int filas)
         {
-            Random rand = new Random();
-            int posibleMovimiento;
-            List<int> caso1 = new List<int>(); //esquina superior izquierda.
-            List<int> caso2 = new List<int>(); //esqina superior derecha.
-            List<int> caso3 = new List<int>(); //esquina inferior izquierda.
-            List<int> caso4 = new List<int>(); //esquina inferior derecha.
-            List<int> caso5 = new List<int>(); //bordes de la izquierda.
-            List<int> caso6 = new List<int>(); //bordes de la derecha.
-            List<int> caso7 = new List<int>(); //borde superior.
-            List<int> caso8 = new List<int>(); //borde inferior.
-            List<int> caso9 = new List<int>(); //otro caso.
-            caso1.Add(0);
-            caso1.Add(1);
-            caso1.Add(columnas);
-            caso1.Add(columnas + 1);
-            caso2.Add(0);
-            caso2.Add(-1);
-            caso2.Add(columnas);
-            caso2.Add(columnas - 1);
-            caso3.Add(0);
-            caso3.Add(1);
-            caso3.Add(-columnas);
-            caso3.Add(-(columnas - 1));
-            caso4.Add(0);
-            caso4.Add(-1);
-            caso4.Add(-columnas);
-            caso4.Add(-(columnas + 1));
-            caso5.Add(0);
-            caso5.Add(1);
-            caso5.Add(columnas);
-            caso5.Add(columnas + 1);
-            caso5.Add(-columnas);
-            caso5.Add(-(columnas - 1));
-            caso6.Add(0);
-            caso6.Add(-1);
-            caso6.Add(columnas);
-            caso6.Add(columnas - 1);
-            caso6.Add(-columnas);
-            caso6.Add(-columnas - 1);
-            caso7.Add(0);
-            caso7.Add(1);
-            caso7.Add(-1);
-            caso7.Add(columnas);
-            caso7.Add(columnas + 1);
-            caso7.Add(columnas - 1);
-            caso8.Add(0);
-            caso8.Add(1);
-            caso8.Add(-1);
-            caso8.Add(-columnas);
-            caso8.Add(-columnas + 1);
-            caso8.Add(-columnas - 1);
-            caso9.Add(-(columnas + 1));
-            caso9.Add(-columnas);
-            caso9.Add(-(columnas - 1));
-            caso9.Add(-1);
-            caso9.Add(0);
-            caso9.Add(1);
-            caso9.Add(columnas - 1);
-            caso9.Add(columnas);
-            caso9.Add(columnas + 1);
-            int fila = mi_posicion / filas;
-            int col = mi_posicion % columnas;
+            // Este es un movimiento para las 8 casillas inmediatas
 
-            if (mi_posicion == 0)
-            {
-                int movimiento = caso1[rand.Next(caso1.Count)];
-                posibleMovimiento = mi_posicion + movimiento;
-                mi_posicion += movimiento;
-            }
+            int posibleMovimiento = mi_posicion;
+            int c = mi_posicion % columnas;
+            int f = (int)mi_posicion / filas;
 
-            else if (col == columnas - 1 && mi_posicion == columnas - 1)
-            {
-                int movimiento = caso2[rand.Next(caso2.Count)];
-                posibleMovimiento = mi_posicion + movimiento;
-                mi_posicion += movimiento;
-            }
-            else if (mi_posicion == (columnas * filas) - columnas)
-            {
-                int movimiento = caso3[rand.Next(caso3.Count)];
-                posibleMovimiento = mi_posicion + movimiento;
-                mi_posicion += movimiento;
-            }
-            else if (mi_posicion == (columnas * filas) - 1)
-            {
-                int movimiento = caso4[rand.Next(caso4.Count)];
-                posibleMovimiento = mi_posicion + movimiento;
-                mi_posicion += movimiento;
-            }
-            else if (filas > 2 && col == 0 && mi_posicion != 0 && (mi_posicion != (columnas * filas) - columnas))
-            {
-                int movimiento = caso5[rand.Next(caso5.Count)];
-                posibleMovimiento = mi_posicion + movimiento;
-                mi_posicion += movimiento;
-            }
-            else if ((mi_posicion + 1 / filas) > 1 && mi_posicion != (filas * columnas) - 1 && mi_posicion%filas != 0 && (mi_posicion +1)%columnas == 0)
-            {
-                int movimiento = caso6[rand.Next(caso6.Count)];
-                posibleMovimiento = mi_posicion + movimiento;
-                mi_posicion += movimiento;
-            }
-            else if (col != 0 && mi_posicion > 0 && mi_posicion < columnas)
-            {
-                int movimiento = caso7[rand.Next(caso7.Count)];
-                posibleMovimiento = mi_posicion + movimiento;
-                mi_posicion += movimiento;
-            }
-            else if (col != 0 && (mi_posicion + 1) % columnas != 0 && mi_posicion > (filas * columnas) - columnas && mi_posicion < (filas * columnas) - 1)
-            {
-                int movimiento = caso8[rand.Next(caso8.Count)];
-                posibleMovimiento = mi_posicion + movimiento; ;
-                mi_posicion += movimiento;
-            }
-            else
-            {
-                int movimiento = caso9[rand.Next(caso9.Count)];
-                posibleMovimiento = mi_posicion + movimiento;
-                mi_posicion += movimiento;
-            }
-            //mi_posicion = rand_fil * columnas + rand_col;
-            //Casillas[3].Borrar(this);
-            return posibleMovimiento;
+            List<int> opciones = new List<int>();
+
+            if (f > 0 && c > 0)
+               opciones.Add((f - 1) * columnas + (c - 1)) ; // izquierda arriba
+            if (c > 0)
+                opciones.Add(f * columnas + (c - 1)); // izquierda centro
+            if (f > 0)
+                opciones.Add((f - 1) * columnas + c); // centro arriba
+            if (f < filas - 1 && c < columnas - 1)
+                opciones.Add((f + 1) * columnas + (c + 1)); // derecha abajo
+            if (c < columnas - 1)
+                opciones.Add(f * columnas + (c + 1)); // derecha centro
+            if (f < filas - 1)
+                opciones.Add((f + 1) * columnas + c); // centro abajo
+            if (f < filas - 1 && c > 0)
+                opciones.Add((f + 1) * columnas + (c - 1)); // izquierda abajo
+            if (f > 0 && c < columnas - 1)
+                opciones.Add((f - 1) * columnas + (c + 1)); // derecha arriba
+
+            return opciones.ElementAt(random.Next(opciones.Count));
         }
 
 

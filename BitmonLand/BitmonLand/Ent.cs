@@ -11,9 +11,9 @@ namespace BitmonLand
 
         public Ent()
         {
-            ptVida = r.Next(2000, 2500);
-            ptAtaque = r.Next(1, 5);
-            Tvida = r.Next(7, 10);
+            ptVida = random.Next(2000, 2500);
+            ptAtaque = random.Next(1, 5);
+            Tvida = random.Next(7, 10);
             Edad = 0;
             tipo = "Ent";
             this.Image = BitmonLand.Properties.Resources.Ent1;
@@ -21,7 +21,7 @@ namespace BitmonLand
 
         public override int Moverse(int columnas, int filas)
         {
-            return 0;
+            return mi_posicion;
         }
         
     }

@@ -11,9 +11,9 @@ namespace BitmonLand
 
         public Wetar()
         {
-            ptVida = r.Next(49, 60);
-            ptAtaque = r.Next(20, 25);
-            Tvida = r.Next(6, 8);
+            ptVida = random.Next(49, 60);
+            ptAtaque = random.Next(20, 25);
+            Tvida = random.Next(6, 8);
             Edad = 0;
             tipo = "Doti";
             this.Image = BitmonLand.Properties.Resources.Wetar1;

@@ -11,9 +11,9 @@ namespace BitmonLand
 
         public Doti()
         {
-            ptVida = r.Next(100, 500);
-            ptAtaque = r.Next(100, 150);
-            Tvida = r.Next(3, 6);
+            ptVida = random.Next(100, 500);
+            ptAtaque = random.Next(100, 150);
+            Tvida = random.Next(3, 6);
             Edad = 0;
             Tipo = "Doti";
             this.Image = BitmonLand.Properties.Resources.Doti1;

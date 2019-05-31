@@ -11,9 +11,9 @@ namespace BitmonLand
 
         public Taplan()
         {
-            ptVida = r.Next(50, 70);
-            ptAtaque = r.Next(8, 13);
-            Tvida = r.Next(6, 9);
+            ptVida = random.Next(50, 70);
+            ptAtaque = random.Next(8, 13);
+            Tvida = random.Next(6, 9);
             Edad = 0;
             tipo = "Taplan";
             this.Image = BitmonLand.Properties.Resources.Taplan1;
