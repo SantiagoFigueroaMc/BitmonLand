@@ -13,9 +13,9 @@ namespace BitmonLand
         {
             ptVida = random.Next(49, 60);
             ptAtaque = random.Next(20, 25);
-            Tvida = random.Next(6, 8);
+            Tvida = random.Next(8, 10);
             Edad = 0;
-            tipo = "Doti";
+            tipo = "Wetar";
             this.Image = BitmonLand.Properties.Resources.Wetar1;
         }
 

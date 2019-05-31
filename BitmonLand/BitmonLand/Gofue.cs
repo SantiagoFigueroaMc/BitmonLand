@@ -13,7 +13,7 @@ namespace BitmonLand
         {
             ptVida = random.Next(40, 60);
             ptAtaque = random.Next(10, 21);
-            Tvida = random.Next(5, 8);
+            Tvida = random.Next(3, 8);
             Edad = 0;
             tipo = "Gofue";
             this.Image = BitmonLand.Properties.Resources.Gofue1;

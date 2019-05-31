@@ -519,7 +519,6 @@ namespace BitmonLand
             }
         }
 
-
         private void Interactuar(Casilla c,Bitmon bitmon1, Bitmon bitmon2)
         {
             if ((bitmon1.Tipo=="Gofue" && bitmon2.Tipo=="Taplan")||(bitmon1.Tipo == "Taplan" && bitmon2.Tipo == "Gofue"))
@@ -611,14 +610,21 @@ namespace BitmonLand
                 // agregar bitmon al mapelse if (tipo == "Gofue")a si es posible
                 // todo lo que al nacer aparece en un terreno ocupado (2 bitmons) muere al instante (el fuerte se aprovecha del debil!)
                 bool pocisionado = false;
+                bool TerrenoValido = true;
                 int potencialCasilla = random.Next((cols * rows));
                 int cont = 0;
                 foreach (Casilla casilla in MapLayout.Controls)
                 {
                     if (cont == potencialCasilla)
                     {
-                        pocisionado = casilla.AddOcupante(bitmon);
-                        if (pocisionado)
+                        if((bitmon.Tipo=="Wetar" && casilla.Tipo != "agua"))
+                        {
+                            TerrenoValido = false;
+                        }
+
+                        else pocisionado = casilla.AddOcupante(bitmon);
+
+                        if (pocisionado && TerrenoValido)
                         {
                             bitmon.SizeMode = PictureBoxSizeMode.Zoom;
                             bitmon.Size = new Size((int)(600 / cols / 3), (int)(600 / cols / 3));
@@ -653,7 +659,7 @@ namespace BitmonLand
             int cont = 0;
             foreach(Casilla c in MapLayout.Controls)
             {
-                if (c.Tipo != "volcan" && c.Tipo != "nieve" && c.ContarOcupantes < 2)
+                if (c.Tipo != "volcan" && c.Tipo != "agua" && c.ContarOcupantes < 2)
                 {
                     posibles_casillas.Add(cont);
                 }
@@ -682,7 +688,17 @@ namespace BitmonLand
             int ataque1 = bitmon1.getataque();
             int ataque2 = bitmon2.getataque();
 
-            while(vida1>=1 && vida2>=1)
+            if (bitmon1.Tipo == "Gofue" && bitmon2.Tipo == "Taplan") 
+            {
+                ataque1 = (int)((double)ataque1 * 1.5); //los gofue tienen ventaja sobre los taplans
+            } 
+
+            if (bitmon1.Tipo == "Taplan" && bitmon2.Tipo == "Gofue")
+            {
+                ataque2 = (int)((double)ataque1 * 1.5); //los gofue tienen ventaja sobre los taplans
+            }
+
+            while (vida1>=1 && vida2>=1)
             {
                 vida1 -= ataque2;
                 vida2 -= ataque1;
