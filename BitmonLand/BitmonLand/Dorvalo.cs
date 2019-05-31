@@ -34,36 +34,90 @@ namespace BitmonLand
         }
 
         public override int Moverse(int columnas, int filas)
-          {
+        {
+            int posibleMovimiento = mi_posicion;
+            int c = mi_posicion % columnas;
+            int f = (int)mi_posicion / filas;
 
+            List<int> opciones = new List<int>();
 
-              int posibleMovimiento = mi_posicion;
-              int c = mi_posicion % columnas;
-              int f = (int)mi_posicion / filas;
-
-              List<int> opciones = new List<int>();
-
-              // Este es un movimiento para las 8 casillas inmediatas
-              if (f > 0 && c > 0)
-                 opciones.Add((f - 1) * columnas + (c - 1)) ; // izquierda arriba
-              if (c > 0)
-                  opciones.Add(f * columnas + (c - 1)); // izquierda centro
-              if (f > 0)
-                  opciones.Add((f - 1) * columnas + c); // centro arriba
-              if (f < filas - 1 && c < columnas - 1)
-                  opciones.Add((f + 1) * columnas + (c + 1)); // derecha abajo
-              if (c < columnas - 1)
-                  opciones.Add(f * columnas + (c + 1)); // derecha centro
-              if (f < filas - 1)
-                  opciones.Add((f + 1) * columnas + c); // centro abajo
-              if (f < filas - 1 && c > 0)
-                  opciones.Add((f + 1) * columnas + (c - 1)); // izquierda abajo
-              if (f > 0 && c < columnas - 1)
-                  opciones.Add((f - 1) * columnas + (c + 1)); // derecha arriba
+            // Este es un movimiento para las 20 casillas inmediatas
+            if (f > 0 && c > 0)
+            {
+                opciones.Add((f - 1) * columnas + (c - 1)) ; // izquierda arriba
+                if (f > 1 && c > 1)
+                    opciones.Add((f - 2) * columnas + (c - 2));
+            }
+            if (c > 0)
+            {
+                opciones.Add(f * columnas + (c - 1)); // izquierda centro
+                if (c > 1)
+                {
+                    opciones.Add(f * columnas + (c - 2));
+                    if (f > 0)
+                        opciones.Add((f - 1) * columnas + (c - 2));
+                    if (f < filas - 1)
+                        opciones.Add((f + 1) * columnas + (c - 2));
+                }
+            }
+            if (f > 0)
+            {
+                opciones.Add((f - 1) * columnas + c); // centro arriba
+                if (f > 1)
+                {
+                    opciones.Add((f-2) * columnas + c);
+                    if (c > 0)
+                        opciones.Add((f - 2) * columnas + (c - 1));
+                    if (c < columnas - 1)
+                        opciones.Add((f - 2) * columnas + (c + 1));
+                }
+            }
+            if (f < filas - 1 && c < columnas - 1)
+            {
+                opciones.Add((f + 1) * columnas + (c + 1)); // derecha abajo
+                if (f < filas - 2 && c < columnas - 2)
+                    opciones.Add((f + 2) * columnas + (c + 2));
+            }
+            if (c < columnas - 1)
+            {
+                opciones.Add(f * columnas + (c + 1)); // derecha centro
+                if (c < columnas-2)
+                {
+                    opciones.Add(f * columnas + (c + 2));
+                    if (f > 0)
+                        opciones.Add((f - 1) * columnas + (c + 2));
+                    if (f < filas - 1)
+                        opciones.Add((f + 1) * columnas + (c + 2));
+                }
+            }
+            if (f < filas - 1)
+            {
+                opciones.Add((f + 1) * columnas + c); // centro abajo
+                if (f < filas-2)
+                {
+                    opciones.Add((f + 2) * columnas + c);
+                    if (c > 0)
+                        opciones.Add((f + 2) * columnas + (c - 1));
+                    if (c < columnas - 1)
+                        opciones.Add((f + 2) * columnas + (c + 1));
+                }
+            }
+            if (f < filas - 1 && c > 0)
+            {
+                opciones.Add((f + 1) * columnas + (c - 1)); // izquierda abajo
+                if (f < filas-2 && c > 1)
+                    opciones.Add((f + 2) * columnas + (c - 2));
+            }
+            if (f > 0 && c < columnas - 1)
+            {
+                opciones.Add((f - 1) * columnas + (c + 1)); // derecha arriba
+                if (f > 1 && c < columnas - 2)
+                    opciones.Add((f - 2) * columnas + (c + 2));
+            }
               
 
-              return opciones.ElementAt(random.Next(opciones.Count));
-          }
+            return opciones.ElementAt(random.Next(opciones.Count));
+        }
 
     }
 }
