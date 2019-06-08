@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listBox_bithala_especies = new System.Windows.Forms.ListBox();
             this.label_tiempo_vida_promedio = new System.Windows.Forms.Label();
             this.groupBox_tiempo_vida_promedio = new System.Windows.Forms.GroupBox();
@@ -43,6 +44,9 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.listBox_especies_extintas = new System.Windows.Forms.ListBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox_tiempo_vida_promedio.SuspendLayout();
             this.groupBox_tiempo_vida_promedio_especie.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -51,6 +55,7 @@
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox_bithala_especies
@@ -201,6 +206,7 @@
             this.tableLayoutPanel2.Controls.Add(this.groupBox_tiempo_vida_promedio_especie, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.groupBox3, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox6, 2, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -233,6 +239,29 @@
             this.listBox_especies_extintas.Size = new System.Drawing.Size(272, 181);
             this.listBox_especies_extintas.TabIndex = 1;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.button1);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox6.Location = new System.Drawing.Point(571, 258);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(280, 200);
+            this.groupBox6.TabIndex = 9;
+            this.groupBox6.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(23, 36);
+            this.button1.Margin = new System.Windows.Forms.Padding(20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(231, 138);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Guardar en archivo";
+            this.toolTip1.SetToolTip(this.button1, "Se guardarán los datos en el archivo results.txt en la carpeta dónde se encuentra" +
+        " el ejecutable del programa");
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Estadisticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,6 +281,7 @@
             this.groupBox4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -272,5 +302,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ListBox listBox_especies_extintas;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

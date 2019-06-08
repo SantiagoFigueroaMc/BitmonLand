@@ -316,7 +316,7 @@ namespace BitmonLand
             {
                 timer_mes.Stop();
 
-                // calcular edad promedio de todos
+                // calcular edad promedio de todos <<< Esto puede ser un OnCalcularPromedio, evento, lo que sea... que lo haga el modelo, todo este else
                 int doti_count = 0;
                 decimal edad_promedio_doti = 0;
                 decimal hijos_promedio_doti = 0;
