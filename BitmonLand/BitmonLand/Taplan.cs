@@ -11,9 +11,9 @@ namespace BitmonLand
 
         public Taplan()
         {
-            ptVida = random.Next(50, 70);
-            ptAtaque = random.Next(8, 13);
-            Tvida = random.Next(6, 9);
+            ptVida = random.Next(50, 120);
+            ptAtaque = random.Next(8, 15);
+            Tvida = random.Next(5, 10);
             Edad = 0;
             tipo = "Taplan";
             this.Image = BitmonLand.Properties.Resources.Taplan1;
@@ -29,11 +29,13 @@ namespace BitmonLand
             else if (tipo_terreno_pisado == "nieve")
             {
                 Edad += 1;
+                Trestante += 1;
                 return tipo_terreno_pisado;
             }
             else if (tipo_terreno_pisado == "volcan")
             {
                 Edad += 1;
+                Trestante += 1;
                 return tipo_terreno_pisado;
             }
 

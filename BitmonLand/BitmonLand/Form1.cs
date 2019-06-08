@@ -75,7 +75,7 @@ namespace BitmonLand
             label_bitmons_muertos.Text = $"Bitmons muertos: {bithalla.Count}";
 
             // Tipos de bitmons
-            string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent", "Doti" }; // santiago, falta Doti
+            string[] bitmonTypes = { "Gofue", "Wetar", "Taplan", "Dorvalo", "Ent", "Doti" }; 
 
             if(settings.velocidad == 0)
             {
@@ -190,7 +190,7 @@ namespace BitmonLand
                     {
                         b = new Doti();
                     }
-                    b.Tipo = t; // se define un tipo aleatorio
+                    b.Tipo = t; 
                     b.Posicion = contador;
                     b.SizeMode = PictureBoxSizeMode.Zoom;
                     b.Size = new Size((int)(600 / cols / 3), (int)(600 / cols / 3));
@@ -277,7 +277,7 @@ namespace BitmonLand
                         {
                             Bitmon bitmon = casilla.Ocupantes[i];
                             bitmon.envejecer();
-                            if (bitmon.getedad() >= bitmon.getTvida())
+                            if (bitmon.gettrestante() >= bitmon.getTvida())
                             {
                                 casilla.BorrarOcupante(bitmon);
                                 bitmons_alive.Remove(bitmon);
@@ -457,6 +457,11 @@ namespace BitmonLand
                     edad_promedio_wetar = edad_promedio_wetar / wetar_count;
                     hijos_promedio_wetar = hijos_promedio_wetar / wetar_count;
                 }
+                if (dorvalo_count > 0)
+                {
+                    edad_promedio_dorvalo = edad_promedio_dorvalo / dorvalo_count;
+                    hijos_promedio_dorvalo = hijos_promedio_dorvalo / dorvalo_count;
+                }
 
                 // 1
                 estadisticas.TiempoVidaPromedio = Math.Round(
@@ -518,7 +523,6 @@ namespace BitmonLand
                 button_ver_estadisticas.Visible = true;
             }
         }
-
 
         private void Interactuar(Casilla c,Bitmon bitmon1, Bitmon bitmon2)
         {
@@ -611,14 +615,21 @@ namespace BitmonLand
                 // agregar bitmon al mapelse if (tipo == "Gofue")a si es posible
                 // todo lo que al nacer aparece en un terreno ocupado (2 bitmons) muere al instante (el fuerte se aprovecha del debil!)
                 bool pocisionado = false;
+                bool TerrenoValido = true;
                 int potencialCasilla = random.Next((cols * rows));
                 int cont = 0;
                 foreach (Casilla casilla in MapLayout.Controls)
                 {
                     if (cont == potencialCasilla)
                     {
-                        pocisionado = casilla.AddOcupante(bitmon);
-                        if (pocisionado)
+                        if((bitmon.Tipo=="Wetar" && casilla.Tipo != "agua"))
+                        {
+                            TerrenoValido = false;
+                        }
+
+                        else pocisionado = casilla.AddOcupante(bitmon);
+
+                        if (pocisionado && TerrenoValido)
                         {
                             bitmon.SizeMode = PictureBoxSizeMode.Zoom;
                             bitmon.Size = new Size((int)(600 / cols / 3), (int)(600 / cols / 3));
@@ -653,7 +664,7 @@ namespace BitmonLand
             int cont = 0;
             foreach(Casilla c in MapLayout.Controls)
             {
-                if (c.Tipo != "volcan" && c.Tipo != "nieve" && c.ContarOcupantes < 2)
+                if (c.Tipo != "volcan" && c.Tipo != "agua" && c.ContarOcupantes < 2)
                 {
                     posibles_casillas.Add(cont);
                 }
@@ -682,7 +693,28 @@ namespace BitmonLand
             int ataque1 = bitmon1.getataque();
             int ataque2 = bitmon2.getataque();
 
-            while(vida1>=1 && vida2>=1)
+            if (bitmon1.Tipo == "Gofue" && bitmon2.Tipo == "Taplan") 
+            {
+                ataque1 = (int)((double)ataque1 * 1.5); //los gofue tienen ventaja sobre los taplans
+            } 
+
+            if (bitmon1.Tipo == "Taplan" && bitmon2.Tipo == "Gofue")
+            {
+                ataque2 = (int)((double)ataque1 * 1.5); //los gofue tienen ventaja sobre los taplans
+            }
+
+            if (bitmon1.Tipo == "Dorvalo" && bitmon2.Tipo == "Gofue")
+            {
+                ataque2 = (int)((double)ataque2 * 0.8);//los dorvalos son resistentes a los gofue
+            }
+
+            if (bitmon1.Tipo == "Gofue" && bitmon2.Tipo == "Dorvalo")
+            {
+                ataque1 = (int)((double)ataque1 * 0.8);//los dorvalos son resistentes a los gofue
+            }
+
+
+            while (vida1>=1 && vida2>=1)
             {
                 vida1 -= ataque2;
                 vida2 -= ataque1;
@@ -716,5 +748,6 @@ namespace BitmonLand
         {
 
         }
+
     }
 }

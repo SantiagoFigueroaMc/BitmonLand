@@ -13,7 +13,7 @@ namespace BitmonLand
         {
             ptVida = random.Next(30, 46);
             ptAtaque = random.Next(8, 13);
-            Tvida = random.Next(4, 8);
+            Tvida = random.Next(6, 11);
             Edad = 0;
             tipo = "Dorvalo";
             this.Image = BitmonLand.Properties.Resources.Dorvalo1;
@@ -24,6 +24,7 @@ namespace BitmonLand
             if (tipo_terreno_pisado == "agua")
             {
                 Edad += 1;
+                Trestante += 1;
                 return tipo_terreno_pisado;
             }
             //else if (tipo_terreno_pisado malo)
