@@ -9,5 +9,11 @@ namespace BitmonLand
     class Controlador
     {
         // Controlar el programa
+        public Controlador(MainForm mf, Model m)
+        {
+            // añadir las funciones de events y cosas
+        }
+
+        // agregar funciones para que haga la pega cuando ocurran eventos
     }
 }
