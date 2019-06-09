@@ -216,17 +216,44 @@ namespace BitmonLand
         {
             StreamWriter sw = new StreamWriter("results.txt");
 
-            string result_lines =
-                $"1 > TIEMPO PROMEDIO DE VIDA\n" +
-                    $"\t {tiempo_vida_promedio} \n" +
-                $"2 > TIEMPO VIDA PROMEDIO POR ESPECIES\n" +
-                    $"\t {tiempo_vida_promedio}\n" +
-                $"3 > TASA BRUTA NATALIDAD POR ESPECIE \n" +
-                $"4 > TASA BRUTA MORTALIDAD \n" +
-                $"5 > CANTIDAD DE HIJOS EN PROMEDIO POR ESPECIE \n" +
-                $"6 > ESPECIES EXTINTAS \n" +
-                $"7 > CANTIDAD DE BITMONS POR ESPECIE EN BITHALA\n"
-                ;
+            // esto es lo que irá guardado en el archivo de texto de resultados
+            sw.WriteLine($"1 > TIEMPO PROMEDIO DE VIDA");
+                sw.WriteLine($"\t{tiempo_vida_promedio}");
+            sw.WriteLine($"2 > TIEMPO VIDA PROMEDIO POR ESPECIES");
+                sw.WriteLine($"\tGofue: {tiempo_vida_promedio_especie["Gofue"]}");
+                sw.WriteLine($"\tTaplan: {tiempo_vida_promedio_especie["Taplan"]}");
+                sw.WriteLine($"\tDoti: {tiempo_vida_promedio_especie["Doti"]}");
+                sw.WriteLine($"\tEnt: {tiempo_vida_promedio_especie["Ent"]}");
+                sw.WriteLine($"\tDorvalo: {tiempo_vida_promedio_especie["Dorvalo"]}");
+                sw.WriteLine($"\tWetar: {tiempo_vida_promedio_especie["Wetar"]}");
+            sw.WriteLine($"3 > TASA BRUTA NATALIDAD POR ESPECIE");
+                sw.WriteLine($"\tGofue: {tasa_bruta_natalidad_especie["Gofue"]}");
+                sw.WriteLine($"\tTaplan: {tasa_bruta_natalidad_especie["Taplan"]}");
+                sw.WriteLine($"\tDoti: {tasa_bruta_natalidad_especie["Doti"]}");
+                sw.WriteLine($"\tEnt: {tasa_bruta_natalidad_especie["Ent"]}");
+                sw.WriteLine($"\tDorvalo: {tasa_bruta_natalidad_especie["Dorvalo"]}");
+                sw.WriteLine($"\tWetar: {tasa_bruta_natalidad_especie["Wetar"]}");
+            sw.WriteLine($"4 > TASA BRUTA MORTALIDAD");
+                sw.WriteLine($"\t{tasa_bruta_mortalidad}");
+            sw.WriteLine($"5 > CANTIDAD DE HIJOS EN PROMEDIO POR ESPECIE");
+                sw.WriteLine($"\tGofue: {cantidad_hijos_promedio_especie["Gofue"]}");
+                sw.WriteLine($"\tTaplan: {cantidad_hijos_promedio_especie["Taplan"]}");
+                sw.WriteLine($"\tDoti: {cantidad_hijos_promedio_especie["Doti"]}");
+                sw.WriteLine($"\tEnt: {cantidad_hijos_promedio_especie["Ent"]}");
+                sw.WriteLine($"\tDorvalo: {cantidad_hijos_promedio_especie["Dorvalo"]}");
+                sw.WriteLine($"\tWetar: {cantidad_hijos_promedio_especie["Wetar"]}");
+            sw.WriteLine($"6 > ESPECIES EXTINTAS");
+                foreach (string i in especies_extintas)
+                {
+                    sw.WriteLine($"\t{i}");
+                }
+            sw.WriteLine($"7 > CANTIDAD DE BITMONS POR ESPECIE EN BITHALA");
+                foreach (KeyValuePair<string, int> j in bithala_cantidad_bitmons_especie)
+                {
+                    sw.WriteLine($"\t{j.Key}: {j.Value}");
+                }
+
+            sw.Close();
         }
     }
 }
