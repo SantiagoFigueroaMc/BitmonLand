@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -209,6 +210,23 @@ namespace BitmonLand
                 $"Dorvalo {bithala_cantidad_bitmons_especie["Dorvalo"]}",
                 $"Wetar {bithala_cantidad_bitmons_especie["Wetar"]}"
             };
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StreamWriter sw = new StreamWriter("results.txt");
+
+            string result_lines =
+                $"1 > TIEMPO PROMEDIO DE VIDA\n" +
+                    $"\t {tiempo_vida_promedio} \n" +
+                $"2 > TIEMPO VIDA PROMEDIO POR ESPECIES\n" +
+                    $"\t {tiempo_vida_promedio}\n" +
+                $"3 > TASA BRUTA NATALIDAD POR ESPECIE \n" +
+                $"4 > TASA BRUTA MORTALIDAD \n" +
+                $"5 > CANTIDAD DE HIJOS EN PROMEDIO POR ESPECIE \n" +
+                $"6 > ESPECIES EXTINTAS \n" +
+                $"7 > CANTIDAD DE BITMONS POR ESPECIE EN BITHALA\n"
+                ;
         }
     }
 }

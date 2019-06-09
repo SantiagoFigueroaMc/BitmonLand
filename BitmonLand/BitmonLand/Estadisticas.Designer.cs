@@ -261,6 +261,7 @@
             this.toolTip1.SetToolTip(this.button1, "Se guardarán los datos en el archivo results.txt en la carpeta dónde se encuentra" +
         " el ejecutable del programa");
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Estadisticas
             // 
