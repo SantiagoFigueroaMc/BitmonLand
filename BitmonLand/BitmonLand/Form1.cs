@@ -153,7 +153,7 @@ namespace BitmonLand
                 if (posiciones_iniciales.Contains(contador))
                 {
                     string t = bitmonTypes.ElementAt(random.Next(bitmonTypes.Count()));
-                    Bitmon b = new Bitmon();
+                    Bitmon b;
                     if (t == "Gofue")
                     {
                         b = new Gofue();
@@ -186,7 +186,7 @@ namespace BitmonLand
                             t = "Dorvalo";
                         }
                     }
-                    else if (t == "Doti")
+                    else 
                     {
                         b = new Doti();
                     }
