@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace BitmonLand
 {
-    class Casilla : FlowLayoutPanel
+    public class Casilla : FlowLayoutPanel
     {
         private List<Bitmon> ocupantes;
         private string tipo;

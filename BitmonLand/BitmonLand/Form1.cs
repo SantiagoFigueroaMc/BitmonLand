@@ -12,13 +12,22 @@ namespace BitmonLand
 {
     public partial class MainForm : Form
     {
-        public event Action OnPlantarArbol;
+        public event Action OnPlantarUnArbol;
+        public event Action OnMoverse;
+        public event Action<Casilla,Bitmon,Bitmon> OnInteractuar;
+        public event Action OnEnvejecer;
+        public event Action OnCalcularPromedio;
+
 
         #region Variables
         List<Bitmon> bitmons_alive = new List<Bitmon>();
+        public List<Bitmon> GetBitmonsAlive { get { return bitmons_alive; } }
         List<Bitmon> bithalla = new List<Bitmon>();
+        public List<Bitmon> GetBithalla { get { return bithalla; } }
         int rows;
+        public int GetRows { get { return rows; } }
         int cols;
+        public int GetCols { get { return cols; } }
         int mes_actual = 1;
         int meses_restantes = 0;
         Random random = new Random();
@@ -33,6 +42,7 @@ namespace BitmonLand
         int ent_nacidos_mes = 0;
         int bitmons_muertos_mes = 0;
 
+
         decimal suma_nacido_mes_gofue = 0;
         decimal suma_nacido_mes_taplan = 0;
         decimal suma_nacido_mes_doti = 0;
@@ -40,6 +50,8 @@ namespace BitmonLand
         decimal suma_nacido_mes_dorvalo = 0;
         decimal suma_nacido_mes_ent = 0;
         decimal suma_muertos_mes = 0;
+
+        public TableLayoutPanel GetMapLayout { get { return MapLayout; } }
         #endregion
 
         public MainForm()
@@ -268,7 +280,7 @@ namespace BitmonLand
 
                 if ((mes_actual % 3) == 0)
                 {
-                    // llamar a OnPlantar <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+                    // llamar a OnPlantarUnArbol <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     PlantarUnArbol();
                 }
 

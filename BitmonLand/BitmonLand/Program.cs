@@ -17,8 +17,8 @@ namespace BitmonLand
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm mainForm = new MainForm();
-            Model model = new Model();
-            Controlador controlador = new Controlador(mainForm, model);
+            EstadisticasModel estadisticas_model = new EstadisticasModel();
+            Controlador controlador = new Controlador(mainForm, estadisticas_model);
             Application.Run(mainForm);
         }
     }

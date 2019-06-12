@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace BitmonLand
 {
-    class Bitmon : PictureBox
+    public class Bitmon : PictureBox
     {
         protected int ptVida;
         protected int ptAtaque;

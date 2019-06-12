@@ -72,7 +72,7 @@
     <Compile Include="Gofue.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Model.cs" />
+    <Compile Include="EstadisticasModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs">
