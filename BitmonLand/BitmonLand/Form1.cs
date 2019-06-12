@@ -12,6 +12,9 @@ namespace BitmonLand
 {
     public partial class MainForm : Form
     {
+        public event Action OnPlantarArbol;
+
+        #region Variables
         List<Bitmon> bitmons_alive = new List<Bitmon>();
         List<Bitmon> bithalla = new List<Bitmon>();
         int rows;
@@ -37,7 +40,7 @@ namespace BitmonLand
         decimal suma_nacido_mes_dorvalo = 0;
         decimal suma_nacido_mes_ent = 0;
         decimal suma_muertos_mes = 0;
-
+        #endregion
 
         public MainForm()
         /* Este form equivale a la clase que se hace cargo de 
@@ -212,10 +215,11 @@ namespace BitmonLand
                 label_bitmons_vivos.Text = $"Bitmons vivos: {bitmons_alive.Count}";
                 label_bitmons_muertos.Text = $"Bitmons muertos: {bithalla.Count}";
 
-                // recorrer bitmons_alive para mover a los wns. 
+                // recorrer bitmons_alive para mover a los btms
                 // Si los bitmons no se mueven, puede ser porque se quedan en una casilla nueva, en vez de la de maplayout.
                 foreach (Bitmon bitmon in bitmons_alive)
                 {
+                    // llamar a OnMoverse aquí <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     int antigua_posicion = bitmon.Posicion;
                     Casilla antigua_casilla = (Casilla)MapLayout.Controls[antigua_posicion];
                     int nueva_posicion = bitmon.Moverse(cols, rows);
@@ -248,9 +252,10 @@ namespace BitmonLand
                     }
                 }
 
-                // recorrer casillas del mapa para que interactuen los wns
+                // recorrer casillas del mapa para que interactuen
                 foreach(Casilla casilla in MapLayout.Controls)
                 {
+                    // llamar aquí a OnInteractuar <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     if (casilla.ContarOcupantes == 2)
                     {
                         Interactuar(casilla,casilla.Ocupantes[0], casilla.Ocupantes[1]);
@@ -263,6 +268,7 @@ namespace BitmonLand
 
                 if ((mes_actual % 3) == 0)
                 {
+                    // llamar a OnPlantar <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                     PlantarUnArbol();
                 }
 
@@ -273,6 +279,7 @@ namespace BitmonLand
                 {
                     for(int i=casilla.Ocupantes.Count-1; i>=0; --i) 
                     {
+                        // llamar a OnEnvejecer <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                         try
                         {
                             Bitmon bitmon = casilla.Ocupantes[i];
@@ -316,7 +323,8 @@ namespace BitmonLand
             {
                 timer_mes.Stop();
 
-                // calcular edad promedio de todos <<< Esto puede ser un OnCalcularPromedio, evento, lo que sea... que lo haga el modelo, todo este else
+                // calcular edad promedio de todos
+                // llamar a OnCalcularPromedio <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
                 int doti_count = 0;
                 decimal edad_promedio_doti = 0;
                 decimal hijos_promedio_doti = 0;
@@ -474,6 +482,7 @@ namespace BitmonLand
                     (dorvalo_count + doti_count + ent_count + gofue_count + taplan_count + wetar_count), 2);
 
                 int decimales_estadistica = 4;
+                
                 // 2
                 estadisticas.TiempoVidaPromedioEspecie = new Dictionary<string, decimal>()
                 {
@@ -519,7 +528,6 @@ namespace BitmonLand
                 }
                 estadisticas.EspeciesExtintas = especies_extintas;
                 
-
                 button_ver_estadisticas.Visible = true;
             }
         }
